@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Amiya Wok &amp; More Wels | Asia All-you-can-eat Restaurant</title>
+<meta name="description" content="Amiya Wok &amp; More – All-you-can-eat Asia Restaurant in Wels. Sushi, Wok, Mongolengrill, Seafood &amp; mehr. Jetzt bestellen oder Tisch anfragen. Salzburger Str. 222.">
+<meta property="og:title" content="Amiya Wok &amp; More Wels">
+<meta property="og:description" content="All-you-can-eat: Sushi, Wok, Mongolengrill &amp; Seafood. 4,1★ Google · Wels">
+<meta property="og:type" content="restaurant">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Amiya Wok & More Wels","servesCuisine":["Asian","Japanese","Chinese"],"address":{"@type":"PostalAddress","streetAddress":"Salzburger Straße 222","addressLocality":"Wels","postalCode":"4600","addressCountry":"AT"},"telephone":["+436763145881","+43724229 0692"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.1","reviewCount":"1300","bestRating":"5"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"11:00","closes":"15:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"17:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday","Sunday"],"opens":"11:00","closes":"22:00"}],"sameAs":["https://www.instagram.com/zhengzhengyan88/"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F3EE;--bg2:#EDE8E0;--dark:#161210;--dark2:#1E1814;
+  --red:#A8201A;--red2:#8B1814;
+  --white:#FFFFFF;--muted:#6B5840;--muted2:#9C876A;--line:rgba(22,18,16,.1);
+  --safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;overflow-x:hidden;scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;height:auto;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:9000;pointer-events:none;}
+
+/* INTRO */
+#intro{position:fixed;inset:0;z-index:10000;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;transition:opacity .8s ease,visibility .8s ease;}
+#intro.out{opacity:0;visibility:hidden;}
+.iw{font-family:'DM Serif Display',serif;font-size:3.2rem;color:var(--white);letter-spacing:-.02em;opacity:0;animation:fu .7s ease forwards .3s;}
+.iw em{font-style:normal;color:var(--red);}
+.is{font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.25);opacity:0;animation:fu .6s ease forwards .7s;}
+.itr{width:110px;height:1px;background:rgba(255,255,255,.08);overflow:hidden;opacity:0;animation:fi .5s ease forwards 1s;}
+.ifill{height:100%;background:var(--red);animation:ifl 1.3s cubic-bezier(.4,0,.2,1) forwards 1.1s;width:0;}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+@keyframes ifl{to{width:100%}}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:calc(var(--safe-t) + 1.2rem) 5vw 1.2rem;transition:all .35s;border-bottom:1px solid transparent;}
+#nav.sc{background:rgba(247,243,238,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--line);padding-top:calc(var(--safe-t) + .8rem);padding-bottom:.8rem;}
+.nb{display:flex;flex-direction:column;gap:1px;text-decoration:none;}
+.nb-n{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--dark);line-height:1;}
+.nb-s{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted2);}
+.nl{display:none;list-style:none;gap:2rem;}
+@media(min-width:1020px){.nl{display:flex;}}
+.nl a{font-size:.74rem;font-weight:500;color:var(--muted);transition:color .2s;}
+.nl a:hover{color:var(--dark);}
+.nr{display:flex;align-items:center;gap:.7rem;}
+.btn-lf{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.3rem;background:#FF8000;color:var(--white);font-size:.74rem;font-weight:700;border-radius:4px;transition:background .2s;white-space:nowrap;}
+.btn-lf:hover{background:#E07000;}
+.btn-nc{display:inline-flex;align-items:center;gap:.4rem;padding:.58rem 1.25rem;background:var(--red);color:var(--white);font-size:.74rem;font-weight:600;border-radius:4px;transition:background .2s;white-space:nowrap;}
+.btn-nc:hover{background:var(--red2);}
+.ham{display:flex;flex-direction:column;gap:4px;padding:5px;width:32px;}
+.ham span{display:block;width:20px;height:1.5px;background:var(--dark);border-radius:1px;transition:.3s;}
+.ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.ham.open span:nth-child(2){opacity:0;}
+.ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+@media(min-width:1020px){.ham{display:none;}}
+
+/* MENU */
+#menu{position:fixed;inset:0;z-index:500;background:var(--dark);clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .55s cubic-bezier(.77,0,.175,1),visibility .55s;display:flex;flex-direction:column;padding:calc(var(--safe-t) + 5rem) 8vw calc(var(--safe-b) + 2.5rem);}
+#menu.open{clip-path:inset(0 0 0% 0);visibility:visible;}
+.mn{list-style:none;flex:1;}
+.mn li{border-bottom:1px solid rgba(255,255,255,.07);opacity:0;transform:translateY(12px);transition:opacity .4s,transform .4s;}
+#menu.open .mn li{opacity:1;transform:none;}
+#menu.open .mn li:nth-child(1){transition-delay:.1s;}
+#menu.open .mn li:nth-child(2){transition-delay:.15s;}
+#menu.open .mn li:nth-child(3){transition-delay:.2s;}
+#menu.open .mn li:nth-child(4){transition-delay:.25s;}
+#menu.open .mn li:nth-child(5){transition-delay:.3s;}
+#menu.open .mn li:nth-child(6){transition-delay:.35s;}
+.mn a{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,5vw,2rem);color:rgba(255,255,255,.5);transition:color .2s;}
+.mn a:hover{color:var(--white);}
+.mb{display:flex;flex-direction:column;gap:.7rem;opacity:0;transition:opacity .4s .5s;}
+#menu.open .mb{opacity:1;}
+.mbc{position:absolute;top:calc(var(--safe-t)+1.2rem);right:5vw;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.15);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.mbt{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.9rem;border-radius:4px;font-size:.82rem;font-weight:600;}
+.mbt-o{background:#FF8000;color:var(--white);}
+.mbt-l{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);}
+
+/* HERO */
+.hero{position:relative;min-height:100dvh;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:var(--dark2);}
+.hbg{position:absolute;inset:0;}
+.hbg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hov{position:absolute;inset:0;background:linear-gradient(160deg,rgba(22,18,16,.15) 0%,rgba(22,18,16,.3) 35%,rgba(22,18,16,.78) 65%,rgba(22,18,16,.95) 100%);}
+.hc{position:relative;z-index:2;padding:0 6vw calc(var(--safe-b) + 4.5rem);max-width:760px;}
+.he{font-size:.58rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:.8rem;margin-bottom:1.8rem;opacity:0;animation:fu .7s ease forwards 2.2s;}
+.he::before{content:'';width:20px;height:1px;background:rgba(255,255,255,.2);flex-shrink:0;}
+.hh{font-family:'DM Serif Display',serif;font-size:clamp(3rem,8vw,7rem);font-weight:400;line-height:1.02;letter-spacing:-.03em;color:var(--white);margin-bottom:1.2rem;opacity:0;animation:fu .9s ease forwards 2.4s;}
+.hh em{font-style:italic;color:rgba(255,255,255,.65);}
+.hs{font-size:clamp(.88rem,1.5vw,1.05rem);font-weight:300;color:rgba(255,255,255,.55);max-width:440px;line-height:1.8;margin-bottom:2.5rem;opacity:0;animation:fu .8s ease forwards 2.6s;}
+.hb{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:2.5rem;opacity:0;animation:fu .7s ease forwards 2.8s;}
+.bp{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 2rem;background:var(--red);color:var(--white);font-size:.85rem;font-weight:700;border-radius:4px;transition:background .2s,transform .15s;white-space:nowrap;}
+.bp:hover{background:var(--red2);transform:translateY(-2px);}
+.bl{display:inline-flex;align-items:center;gap:.5rem;padding:.92rem 1.8rem;background:#FF8000;color:var(--white);font-size:.85rem;font-weight:700;border-radius:4px;transition:background .2s,transform .15s;white-space:nowrap;}
+.bl:hover{background:#E07000;transform:translateY(-2px);}
+.bg{display:inline-flex;align-items:center;gap:.5rem;padding:.92rem 1.6rem;border:1.5px solid rgba(255,255,255,.22);color:rgba(255,255,255,.8);font-size:.85rem;font-weight:500;border-radius:4px;background:rgba(255,255,255,.05);backdrop-filter:blur(6px);transition:border-color .2s;white-space:nowrap;}
+.bg:hover{border-color:rgba(255,255,255,.5);}
+.ht{display:flex;align-items:center;gap:.9rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.1);opacity:0;animation:fu .6s ease forwards 3s;}
+.ts{color:#FBBC05;font-size:.9rem;letter-spacing:2px;}
+.tt{font-size:.78rem;color:rgba(255,255,255,.45);}
+.tt strong{color:rgba(255,255,255,.75);}
+
+/* STRIP */
+.strip{background:var(--dark2);display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(255,255,255,.06);}
+@media(max-width:640px){.strip{grid-template-columns:1fr 1fr;}}
+.si{padding:1.5rem 1.8rem;border-right:1px solid rgba(255,255,255,.06);transition:background .25s;}
+.si:last-child{border-right:none;}
+.si:hover{background:rgba(255,255,255,.03);}
+@media(max-width:640px){.si:nth-child(2){border-right:none;}.si:nth-child(3){border-top:1px solid rgba(255,255,255,.06);}.si:nth-child(4){border-top:1px solid rgba(255,255,255,.06);}}
+.sl{font-size:.52rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.35rem;}
+.sv{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--white);}
+
+/* SECTIONS */
+.sec{padding:6rem 5vw;}
+.si2{max-width:1160px;margin:0 auto;}
+.stag{font-size:.56rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2);display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem;}
+.stag::before{content:'';width:16px;height:1px;background:var(--muted2);}
+.sh2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:400;letter-spacing:-.025em;line-height:1.08;color:var(--dark);margin-bottom:1rem;}
+.sh2 em{font-style:italic;color:var(--muted);}
+.sp{font-size:.92rem;color:var(--muted);font-weight:300;line-height:1.9;max-width:520px;}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .65s ease,transform .65s ease;}
+.rv.on{opacity:1;transform:none;}
+.rl{opacity:0;transform:translateX(-14px);transition:opacity .65s ease,transform .65s ease;}
+.rl.on{opacity:1;transform:none;}
+.rr{opacity:0;transform:translateX(14px);transition:opacity .65s ease,transform .65s ease;}
+.rr.on{opacity:1;transform:none;}
+
+/* MOSAIC */
+.mg{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:320px 200px;gap:10px;}
+@media(max-width:500px){.mg{grid-template-rows:210px 140px;gap:6px;}}
+.mi{border-radius:6px;overflow:hidden;background:var(--bg2);}
+.mi.tall{grid-row:span 2;}
+.mi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.mi:hover img{transform:scale(1.04);}
+
+/* EXP */
+.eg{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+@media(max-width:860px){.eg{grid-template-columns:1fr;gap:3rem;}}
+
+/* TABS */
+.tsec{background:var(--dark);padding:5rem 5vw;}
+.tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:3rem;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{padding:.88rem 1.8rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .25s,border-color .25s;cursor:pointer;}
+.tab.on{color:var(--white);border-color:var(--red);}
+.tab:hover{color:rgba(255,255,255,.7);}
+.panel{display:none;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.panel.on{display:grid;}
+@media(max-width:760px){.panel{grid-template-columns:1fr;gap:2.5rem;}}
+.pimg{border-radius:6px;overflow:hidden;aspect-ratio:4/3;}
+.pimg img{width:100%;height:100%;object-fit:cover;display:block;}
+.pnr{font-size:.52rem;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.2);margin-bottom:.5rem;}
+.ph{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--white);line-height:1.1;margin-bottom:.9rem;}
+.pp{font-size:.9rem;color:rgba(255,255,255,.48);line-height:1.85;font-weight:300;}
+.octa{margin-top:1.8rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.bls{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.4rem;background:#FF8000;color:var(--white);font-size:.78rem;font-weight:700;border-radius:4px;transition:background .2s;}
+.bls:hover{background:#E07000;}
+.on2{font-size:.68rem;color:rgba(255,255,255,.25);}
+
+/* CINEMATIC */
+.cine{position:relative;overflow:hidden;height:55vh;min-height:340px;display:flex;align-items:center;justify-content:center;}
+.cbg{position:absolute;inset:-8%;filter:brightness(.55);will-change:transform;}
+.cbg img{width:100%;height:100%;object-fit:cover;display:block;}
+.cc{position:relative;z-index:2;text-align:center;padding:0 5vw;}
+.ch{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5.5vw,4.5rem);color:var(--white);line-height:1.1;letter-spacing:-.025em;margin-bottom:.7rem;}
+.ch em{font-style:italic;color:rgba(255,255,255,.6);}
+.cs{font-size:.9rem;color:rgba(255,255,255,.5);font-weight:300;}
+
+/* SEAFOOD */
+.sfsec{background:var(--bg2);}
+.sfg{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center;}
+@media(max-width:860px){.sfg{grid-template-columns:1fr;gap:3rem;}}
+.sfi{border-radius:6px;overflow:hidden;aspect-ratio:4/3;}
+.sfi img{width:100%;height:100%;object-fit:cover;}
+
+/* SUSHI */
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:3rem;}
+@media(max-width:640px){.sg{grid-template-columns:1fr 1fr;}}
+.sgi{border-radius:6px;overflow:hidden;aspect-ratio:1;background:var(--bg2);}
+.sgi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.sgi:hover img{transform:scale(1.06);}
+.sgi.wide{grid-column:span 2;aspect-ratio:2/1;}
+@media(max-width:640px){.sgi.wide{grid-column:span 1;aspect-ratio:1;}}
+
+/* ATMO */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+@media(max-width:860px){.ag{grid-template-columns:1fr;gap:3rem;}}
+.ai{border-radius:6px;overflow:hidden;aspect-ratio:4/3;}
+.ai img{width:100%;height:100%;object-fit:cover;}
+.ad{display:flex;align-items:flex-start;gap:.9rem;font-size:.85rem;color:var(--muted);margin-bottom:.6rem;line-height:1.5;}
+.ad svg{flex-shrink:0;margin-top:1px;color:var(--red);}
+
+/* BEWERTUNGEN */
+.revsec{background:var(--dark2);}
+.revg{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+@media(max-width:760px){.revg{grid-template-columns:1fr;gap:2.5rem;}}
+.rb{font-family:'DM Serif Display',serif;font-size:clamp(5rem,12vw,8rem);color:var(--white);line-height:1;letter-spacing:-.04em;}
+.rs{color:#FBBC05;font-size:1.1rem;letter-spacing:3px;margin:.4rem 0;}
+.rc{font-size:.8rem;color:rgba(255,255,255,.38);}
+.rsrc{display:flex;align-items:center;gap:.5rem;padding:.5rem .9rem;background:rgba(255,255,255,.05);border-radius:3px;width:fit-content;margin-top:.5rem;}
+.rsrcl{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.rcta{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.4rem;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7);font-size:.78rem;font-weight:600;border-radius:4px;margin-top:1.2rem;transition:all .25s;}
+.rcta:hover{border-color:rgba(255,255,255,.45);color:var(--white);}
+.pr{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.3rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:4px;margin-bottom:.8rem;transition:background .25s;}
+.pr:hover{background:rgba(255,255,255,.07);}
+.prn{font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.28);}
+.prv{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--white);margin:.1rem 0;}
+.prs{color:#FBBC05;font-size:.6rem;letter-spacing:2px;}
+.prc{font-size:.62rem;color:rgba(255,255,255,.22);}
+
+/* ORDER */
+.osec{background:var(--red);text-align:center;padding:5rem 5vw;}
+.oi{max-width:580px;margin:0 auto;}
+.oh{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4.5vw,3.2rem);color:var(--white);line-height:1.1;margin-bottom:.9rem;}
+.os{font-size:.9rem;color:rgba(255,255,255,.7);margin-bottom:2.5rem;line-height:1.8;}
+.ob{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;}
+.bw{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 2rem;background:var(--white);color:var(--red);font-size:.88rem;font-weight:700;border-radius:4px;transition:all .2s;}
+.bw:hover{background:var(--bg);transform:translateY(-2px);}
+.bwo{display:inline-flex;align-items:center;gap:.5rem;padding:.92rem 1.8rem;border:1.5px solid rgba(255,255,255,.35);color:rgba(255,255,255,.85);font-size:.88rem;font-weight:500;border-radius:4px;transition:all .2s;}
+.bwo:hover{border-color:rgba(255,255,255,.7);color:var(--white);}
+
+/* ZEITEN */
+.zksec{background:var(--white);}
+.zkg{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start;}
+@media(max-width:760px){.zkg{grid-template-columns:1fr;gap:3rem;}}
+.sbadge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border-radius:50px;font-size:.68rem;font-weight:700;margin-bottom:1.5rem;}
+.sbadge.open{background:rgba(22,163,74,.09);color:#15803D;}
+.sbadge.closed{background:rgba(168,32,26,.07);color:var(--red);}
+.sdot{width:6px;height:6px;border-radius:50%;}
+.sbadge.open .sdot{background:#15803D;animation:p2 2s infinite;}
+.sbadge.closed .sdot{background:var(--red);}
+@keyframes p2{0%{box-shadow:0 0 0 0 rgba(21,128,61,.4)}70%{box-shadow:0 0 0 7px rgba(21,128,61,0)}100%{box-shadow:0 0 0 0 rgba(21,128,61,0)}}
+.zt{border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:.8rem;}
+.zr{display:grid;grid-template-columns:1.2fr 1fr;padding:.82rem 1.2rem;border-bottom:1px solid var(--line);font-size:.85rem;transition:background .2s;}
+.zr:last-child{border-bottom:none;}
+.zr:hover{background:var(--bg);}
+.zd{font-weight:600;color:var(--dark);}
+.zn{font-size:.62rem;color:var(--muted2);grid-column:1/-1;margin-top:.15rem;}
+.kc{display:flex;flex-direction:column;gap:.7rem;margin-top:.8rem;}
+.kcard{display:flex;align-items:center;gap:.9rem;padding:.95rem 1.2rem;border:1px solid var(--line);border-radius:4px;text-decoration:none;transition:all .2s;background:var(--bg);}
+.kcard:hover{border-color:rgba(168,32,26,.3);transform:translateX(3px);}
+.ki{width:34px;height:34px;flex-shrink:0;background:rgba(168,32,26,.06);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--red);transition:background .2s,color .2s;}
+.kcard:hover .ki{background:var(--red);color:var(--white);}
+.kl{font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);}
+.kv{font-size:.88rem;font-weight:600;color:var(--dark);margin-top:1px;}
+.mw{border-radius:4px;overflow:hidden;height:230px;border:1px solid var(--line);margin-top:1.5rem;}
+.mw iframe{width:100%;height:100%;border:0;display:block;}
+
+/* FCTA */
+.fcta{position:relative;overflow:hidden;min-height:460px;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--dark);}
+.fbg{position:absolute;inset:0;}
+.fbg img{width:100%;height:100%;object-fit:cover;opacity:.3;}
+.fov{position:absolute;inset:0;background:rgba(22,18,16,.65);}
+.fc{position:relative;z-index:2;max-width:560px;padding:4rem 5vw;}
+.fey{font-size:.56rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:1.2rem;}
+.fh{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,5.5vw,4rem);color:var(--white);line-height:1.08;letter-spacing:-.025em;margin-bottom:.8rem;}
+.fh em{font-style:italic;color:rgba(255,255,255,.55);}
+.fs{font-size:.9rem;color:rgba(255,255,255,.45);margin-bottom:2.5rem;}
+.fb2{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;}
+
+/* MOBILE BAR */
+.mob{display:none;position:fixed;bottom:0;left:0;right:0;z-index:400;background:rgba(247,243,238,.97);backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:.6rem 4vw calc(var(--safe-b) + .6rem);grid-template-columns:1fr 1.6fr 1fr;gap:.4rem;}
+@media(max-width:780px){.mob{display:grid;}body{padding-bottom:calc(66px + var(--safe-b));}}
+.mbi{display:flex;flex-direction:column;align-items:center;gap:.22rem;padding:.45rem .2rem;border-radius:6px;text-decoration:none;border:none;background:none;min-height:48px;justify-content:center;cursor:pointer;transition:background .15s;}
+.mbi:hover,.mbi:active{background:var(--bg2);}
+.mbi-i{width:19px;height:19px;color:var(--muted);}
+.mbi-l{font-size:.52rem;font-weight:600;color:var(--muted);letter-spacing:.04em;}
+.mbi-o{background:#FF8000;border-radius:8px;}
+.mbi-o:hover,.mbi-o:active{background:#E07000;}
+.mbi-o .mbi-i,.mbi-o .mbi-l{color:var(--white);}
+
+/* FOOTER */
+footer{background:var(--dark);padding:4rem 5vw 2rem;}
+.fi2{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4rem;margin-bottom:3rem;}
+@media(max-width:760px){.fi2{grid-template-columns:1fr;gap:2.5rem;}}
+.fbn{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--white);margin-bottom:.3rem;}
+.fbs{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:1rem;display:block;}
+.fbd{font-size:.78rem;color:rgba(255,255,255,.34);line-height:1.85;}
+.fct{font-size:.53rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:.9rem;}
+.fli{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.fli a{font-size:.8rem;color:rgba(255,255,255,.38);transition:color .2s;}
+.fli a:hover{color:rgba(255,255,255,.8);}
+.fco{font-size:.8rem;color:rgba(255,255,255,.38);line-height:2.1;}
+.fco a{color:rgba(255,255,255,.38);transition:color .2s;}
+.fco a:hover{color:rgba(255,255,255,.7);}
+.fbot{max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem;border-top:1px solid rgba(255,255,255,.06);padding-top:1.5rem;font-size:.65rem;color:rgba(255,255,255,.18);}
+.fleg{display:flex;gap:1.5rem;}
+.fleg a{color:rgba(255,255,255,.18);transition:color .2s;}
+.fleg a:hover{color:rgba(255,255,255,.5);}
+
+@media(max-width:480px){
+  .hb,.ob,.fb2{flex-direction:column;align-items:stretch;}
+  .hb a,.ob a,.fb2 a{justify-content:center;}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<div id="intro">
+  <div class="iw">Amiya<em>.</em></div>
+  <div class="is">Wok &amp; More · Wels</div>
+  <div class="itr"><div class="ifill"></div></div>
+</div>
+
+<!-- MOBILE BAR -->
+<div class="mob">
+  <a href="tel:+436763145881" class="mbi">
+    <svg class="mbi-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <span class="mbi-l">ANRUFEN</span>
+  </a>
+  <a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener" class="mbi mbi-o">
+    <svg class="mbi-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="mbi-l">BESTELLEN</span>
+  </a>
+  <a href="https://maps.google.com/?q=Salzburger+Stra%C3%9Fe+222,+4600+Wels" target="_blank" rel="noopener" class="mbi">
+    <svg class="mbi-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+    <span class="mbi-l">ROUTE</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nb">
+    <span class="nb-n">Amiya Wok &amp; More</span>
+    <span class="nb-s">Asia Restaurant · Wels</span>
+  </a>
+  <ul class="nl">
+    <li><a href="#buffet">Buffet</a></li>
+    <li><a href="#sushi">Sushi</a></li>
+    <li><a href="#restaurant">Restaurant</a></li>
+    <li><a href="#bewertungen">Bewertungen</a></li>
+    <li><a href="#zeiten">Öffnungszeiten</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <div class="nr">
+    <a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener" class="btn-lf">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Lieferando
+    </a>
+    <a href="tel:+436763145881" class="btn-nc">Anrufen</a>
+    <button class="ham" id="ham" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MENU -->
+<div id="menu" role="dialog" aria-modal="true">
+  <button class="mbc" id="mc">✕</button>
+  <ul class="mn">
+    <li><a href="#buffet">Buffet Erlebnis</a></li>
+    <li><a href="#sushi">Sushi &amp; Wok</a></li>
+    <li><a href="#seafood">Seafood</a></li>
+    <li><a href="#restaurant">Restaurant</a></li>
+    <li><a href="#bewertungen">Bewertungen</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <div class="mb">
+    <a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener" class="mbt mbt-o">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Jetzt auf Lieferando bestellen
+    </a>
+    <a href="tel:+436763145881" class="mbt mbt-l">+43 676 314 58 81</a>
+    <a href="tel:+43 7242 290692" class="mbt mbt-l">07242 29 06 92</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hbg"><img src="img-interior2.jpg" alt="Amiya Wok &amp; More Wels – Innenraum mit Kronleuchter und roten Stühlen" loading="eager" fetchpriority="high"></div>
+  <div class="hov"></div>
+  <div class="hc">
+    <p class="he">All-you-can-eat · Sushi · Wok · Seafood · Mongolengrill · Wels</p>
+    <h1 class="hh">Asia. Frisch.<br><em>Grenzenlos.</em></h1>
+    <p class="hs">Sushi, Wok und asiatische Vielfalt – dein All-you-can-eat-Erlebnis in Wels. Täglich frisch, riesige Auswahl.</p>
+    <div class="hb">
+      <a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener" class="bl">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Jetzt auf Lieferando bestellen
+      </a>
+      <a href="tel:+436763145881" class="bg">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Anrufen
+      </a>
+      <a href="https://maps.google.com/?q=Salzburger+Stra%C3%9Fe+222,+4600+Wels" target="_blank" rel="noopener" class="bg">Route</a>
+    </div>
+    <div class="ht">
+      <span class="ts">★★★★☆</span>
+      <span class="tt"><strong>4,1</strong> bei über 1.300 Google-Rezensionen</span>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="si rv"><div class="sl">Konzept</div><div class="sv">All-you-can-eat</div></div>
+  <div class="si rv" style="transition-delay:.07s"><div class="sl">Küche</div><div class="sv">Sushi &amp; Wok</div></div>
+  <div class="si rv" style="transition-delay:.14s"><div class="sl">Highlight</div><div class="sv">Seafood &amp; Grill</div></div>
+  <div class="si rv" style="transition-delay:.21s"><div class="sl">Bestellung</div><div class="sv">Lieferando</div></div>
+</div>
+
+<!-- ERLEBNIS -->
+<section class="sec" style="background:var(--bg);">
+  <div class="si2">
+    <div class="eg">
+      <div class="mg rl">
+        <div class="mi tall"><img src="img-sushi-plate.jpg" alt="Sushi Platte Amiya Wels – Nigiri, Maki, Lachs-Rosen" loading="lazy"></div>
+        <div class="mi"><img src="img-buffet.jpg" alt="Warmes Buffet Amiya Wels" loading="lazy"></div>
+        <div class="mi"><img src="img-interior1.jpg" alt="Restaurant Innenraum Amiya Wels" loading="lazy"></div>
+      </div>
+      <div class="rr" style="transition-delay:.12s">
+        <p class="stag">Das Amiya Erlebnis</p>
+        <h2 class="sh2">So viel Auswahl.<br>So viel <em>Geschmack.</em></h2>
+        <p class="sp" style="margin-bottom:1.6rem;">Beim Amiya stellst du dir deinen Teller selbst zusammen – frisches Sushi aus der Vitrine, aromatische Wok-Gerichte, Seafood und den Mongolengrill.</p>
+        <p class="sp">Kein Warten. Keine Kompromisse. Dein Tempo, deine Auswahl.</p>
+        <div style="margin-top:2.2rem;display:flex;gap:.9rem;flex-wrap:wrap;">
+          <a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener" class="bl" style="font-size:.82rem;padding:.8rem 1.6rem;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Online bestellen
+          </a>
+          <a href="#buffet" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:600;color:var(--dark);border-bottom:1px solid var(--line);padding-bottom:2px;align-self:center;">
+            Buffet ansehen →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUFFET TABS -->
+<section id="buffet" class="tsec">
+  <div class="si2">
+    <div class="rv" style="margin-bottom:3rem;">
+      <p class="stag" style="color:rgba(255,255,255,.28);">Buffet</p>
+      <h2 class="sh2" style="color:var(--white);">Ein Buffet.<br>Unzählige <em>Möglichkeiten.</em></h2>
+    </div>
+    <div class="tabs">
+      <button class="tab on" onclick="setTab(0)">Warmes Buffet</button>
+      <button class="tab" onclick="setTab(1)">Sushi</button>
+      <button class="tab" onclick="setTab(2)">Mongolengrill</button>
+      <button class="tab" onclick="setTab(3)">Seafood</button>
+    </div>
+    <div id="t0" class="panel on">
+      <div class="pimg"><img src="img-buffet.jpg" alt="Warmes Buffet Amiya Wels – Chicken, Pommes, Onion Rings" loading="lazy"></div>
+      <div>
+        <div class="pnr">01 / 04</div>
+        <h3 class="ph">Warmes Buffet</h3>
+        <p class="pp">Frittiertes, Wok-Gerichte, asiatische Snacks und mehr – täglich eine große Auswahl an heißen Speisen. Chicken, Onion Rings, Frühlingsrollen und vieles mehr.</p>
+        <div class="octa">
+          <a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener" class="bls">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Lieferando bestellen
+          </a>
+          <span class="on2">Auch zum Mitnehmen</span>
+        </div>
+      </div>
+    </div>
+    <div id="t1" class="panel">
+      <div class="pimg"><img src="img-sushi-bar.jpg" alt="Sushi Vitrine Amiya Wels – bunte Spezialrollen" loading="lazy"></div>
+      <div>
+        <div class="pnr">02 / 04</div>
+        <h3 class="ph">Sushi</h3>
+        <p class="pp">Täglich frisch aus der Vitrine – Maki, bunte Spezialrollen, Nigiri mit Lachs, Thunfisch und Garnelen. Als Teil des All-you-can-eat-Angebots.</p>
+      </div>
+    </div>
+    <div id="t2" class="panel">
+      <div class="pimg"><img src="img-grill-plate.jpg" alt="Mongolengrill Teller Amiya Wels" loading="lazy"></div>
+      <div>
+        <div class="pnr">03 / 04</div>
+        <h3 class="ph">Mongolengrill</h3>
+        <p class="pp">Du wählst deine Zutaten aus Fleisch, Seafood und Gemüse und suchst dir deine Sauce dazu: Mongolei, Thai, Mango, Austern, Japan, China, Schwarze Pfeffer oder ohne.</p>
+      </div>
+    </div>
+    <div id="t3" class="panel">
+      <div class="pimg"><img src="img-seafood-bar.jpg" alt="Seafood Theke Amiya Wels – Hummer, Muscheln, Garnelen" loading="lazy"></div>
+      <div>
+        <div class="pnr">04 / 04</div>
+        <h3 class="ph">Seafood</h3>
+        <p class="pp">Frischer Hummer, Jakobsmuscheln, Garnelen, Tintenfisch – als Teil des Mongolengrills oder direkt vom Buffet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CINEMATIC -->
+<div class="cine">
+  <div class="cbg" id="cbg"><img src="img-lobster.jpg" alt="Hummer Teller Amiya Wels" loading="lazy"></div>
+  <div class="cc">
+    <h2 class="ch">Dein Teller.<br><em>Deine Auswahl.</em></h2>
+    <p class="cs">All-you-can-eat heißt: kein Limit. Nur Genuss.</p>
+  </div>
+</div>
+
+<!-- SEAFOOD -->
+<section id="seafood" class="sec sfsec">
+  <div class="si2">
+    <div class="sfg">
+      <div class="rl">
+        <div class="sfi"><img src="img-seafood-bar.jpg" alt="Seafood Theke Amiya Wels – Hummer, Muscheln, Garnelen, Jakobsmuscheln" loading="lazy"></div>
+      </div>
+      <div class="rr" style="transition-delay:.12s">
+        <p class="stag">Seafood &amp; Mongolengrill</p>
+        <h2 class="sh2">Frisch vom Grill.<br>Genau <em>nach deinem Geschmack.</em></h2>
+        <p class="sp" style="margin-bottom:1.5rem;">Hummer, Jakobsmuscheln, Garnelen, Tintenfisch und Muscheln – frisch auf dem Mongolengrill. Du wählst die Zutaten, du wählst die Sauce.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;">
+          <span style="padding:.45rem .85rem;background:var(--white);border:1px solid var(--line);border-radius:3px;font-size:.68rem;font-weight:600;">Mongolei</span>
+          <span style="padding:.45rem .85rem;background:var(--white);border:1px solid var(--line);border-radius:3px;font-size:.68rem;font-weight:600;">Thai</span>
+          <span style="padding:.45rem .85rem;background:var(--white);border:1px solid var(--line);border-radius:3px;font-size:.68rem;font-weight:600;">Mango</span>
+          <span style="padding:.45rem .85rem;background:var(--white);border:1px solid var(--line);border-radius:3px;font-size:.68rem;font-weight:600;">Austern</span>
+          <span style="padding:.45rem .85rem;background:var(--white);border:1px solid var(--line);border-radius:3px;font-size:.68rem;font-weight:600;">Japan</span>
+          <span style="padding:.45rem .85rem;background:var(--white);border:1px solid var(--line);border-radius:3px;font-size:.68rem;font-weight:600;">China</span>
+          <span style="padding:.45rem .85rem;background:var(--white);border:1px solid var(--line);border-radius:3px;font-size:.68rem;font-weight:600;">Schwarze Pfeffer</span>
+          <span style="padding:.45rem .85rem;background:var(--bg2);border:1px solid var(--line);border-radius:3px;font-size:.68rem;color:var(--muted);">Ohne Sauce</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSHI -->
+<section id="sushi" class="sec" style="background:var(--white);">
+  <div class="si2">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:.5rem;">
+      <div class="rv">
+        <p class="stag">Sushi</p>
+        <h2 class="sh2">Sushi, das zuerst<br>mit den Augen <em>überzeugt.</em></h2>
+      </div>
+      <div class="rv" style="transition-delay:.08s">
+        <p class="sp">Täglich frisch – aus der Vitrine direkt auf deinen Teller. Maki, Nigiri, bunte Spezialrollen. Teil des All-you-can-eat-Angebots.</p>
+      </div>
+    </div>
+    <div class="sg rv">
+      <div class="sgi wide"><img src="img-sushi-bar.jpg" alt="Sushi Vitrine Amiya Wels – riesige Auswahl" loading="lazy"></div>
+      <div class="sgi"><img src="img-sushi-plate.jpg" alt="Sushi Platte Amiya Wels – Nigiri, Maki" loading="lazy"></div>
+      <div class="sgi" style="background:var(--dark2);display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;padding:1rem;">
+          <div style="font-family:'DM Serif Display',serif;font-size:2.5rem;color:rgba(168,32,26,.15);">鮨</div>
+          <div style="font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:.3rem;">Sushi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTAURANT -->
+<section id="restaurant" class="sec" style="background:var(--bg);">
+  <div class="si2">
+    <div class="ag">
+      <div class="rl">
+        <div class="ai"><img src="img-interior2.jpg" alt="Amiya Wok More Wels Innenraum – Kronleuchter, rote Stühle, warme Beleuchtung" loading="lazy"></div>
+      </div>
+      <div class="rr" style="transition-delay:.12s">
+        <p class="stag">Das Restaurant</p>
+        <h2 class="sh2">Platz für <em>Genuss.</em></h2>
+        <p class="sp" style="margin-bottom:1.8rem;">Ob zu zweit, mit Freunden oder in größerer Runde – Amiya bietet eine modern gestaltete Atmosphäre mit rotem Premium-Mobiliar und stimmungsvoller Beleuchtung.</p>
+        <div class="ad">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Salzburger Straße 222, 4600 Wels
+        </div>
+        <div class="ad">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          Parkplätze direkt vor dem Restaurant
+        </div>
+        <div class="ad">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Mo–Do 11–15 &amp; 17–22 · Fr–So &amp; Feiertage 11–22
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEWERTUNGEN -->
+<section id="bewertungen" class="sec revsec">
+  <div class="si2">
+    <div class="rv" style="margin-bottom:3rem;">
+      <p class="stag" style="color:rgba(255,255,255,.24);">Bewertungen</p>
+      <h2 class="sh2" style="color:var(--white);">Was Gäste sagen.</h2>
+      <p style="font-size:.9rem;color:rgba(255,255,255,.38);font-weight:300;line-height:1.8;margin-top:.5rem;max-width:500px;">Über 1.300 Google-Bewertungen – alle Rezensionen findest du direkt auf Google.</p>
+    </div>
+    <div class="revg">
+      <div class="rv">
+        <div class="rb">4,1</div>
+        <div class="rs">★★★★☆</div>
+        <div class="rc">von 5 Sternen</div>
+        <div class="rsrc">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <span class="rsrcl">Über 1.300 Google-Rezensionen · Amiya Wels</span>
+        </div>
+        <a href="https://www.google.com/maps/place/Amiya+Wok+%26+More+Wels" target="_blank" rel="noopener" class="rcta">
+          Alle Google-Bewertungen ansehen →
+        </a>
+      </div>
+      <div class="rv" style="transition-delay:.1s">
+        <div class="pr"><div><div class="prn">Google</div><div class="prv">4,1</div><div class="prs">★★★★☆</div></div><div class="prc">1.300+ Rezensionen</div></div>
+        <div class="pr"><div><div class="prn">Lieferando</div><div class="prv">4,4</div><div class="prs">★★★★★</div></div><div class="prc">243 Rezensionen</div></div>
+        <div class="pr"><div><div class="prn">Facebook</div><div class="prv">5,0</div><div class="prs">★★★★★</div></div><div class="prc">3 Bewertungen</div></div>
+        <div class="pr"><div><div class="prn">Herold</div><div class="prv">3,7</div><div class="prs">★★★☆☆</div></div><div class="prc">4 Bewertungen</div></div>
+        <p style="font-size:.62rem;color:rgba(255,255,255,.18);line-height:1.6;margin-top:.5rem;font-style:italic;">Alle Bewertungen aus öffentlichen Quellen. Keine Rezensionen erfunden.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section class="osec">
+  <div class="oi rv">
+    <h2 class="oh">Jetzt bestellen.</h2>
+    <p class="os">Lieferung nach Hause oder zum Mitnehmen – wähle einfach auf Lieferando.</p>
+    <div class="ob">
+      <a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener" class="bw">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Auf Lieferando bestellen
+      </a>
+      <a href="tel:+436763145881" class="bwo">Direkt anrufen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ÖFFNUNGSZEITEN & KONTAKT -->
+<section id="zeiten" class="sec zksec">
+  <div class="si2">
+    <div class="zkg">
+      <div class="rv">
+        <p class="stag">Öffnungszeiten</p>
+        <h2 class="sh2" style="font-size:clamp(1.8rem,3vw,2.4rem);">Wann sehen<br>wir uns?</h2>
+        <div id="sbadge" class="sbadge" style="margin-top:1.5rem;"></div>
+        <div class="zt">
+          <div class="zr"><span class="zd">Montag – Donnerstag</span><span style="color:var(--muted)">11:00 – 15:00</span><span class="zn">Abends: 17:00 – 22:00 Uhr</span></div>
+          <div class="zr"><span class="zd">Freitag</span><span style="color:var(--muted)">11:00 – 22:00</span></div>
+          <div class="zr"><span class="zd">Samstag</span><span style="color:var(--muted)">11:00 – 22:00</span></div>
+          <div class="zr"><span class="zd">Sonntag</span><span style="color:var(--muted)">11:00 – 22:00</span></div>
+          <div class="zr"><span class="zd">Feiertage</span><span style="color:var(--muted)">11:00 – 22:00</span></div>
+        </div>
+        <p style="font-size:.65rem;color:var(--muted2);margin-top:.7rem;font-style:italic;">Alle Angaben ohne Gewähr. Aktuelle Zeiten bitte auf Google Maps prüfen.</p>
+      </div>
+      <div id="kontakt" class="rv" style="transition-delay:.1s">
+        <p class="stag">Kontakt &amp; Route</p>
+        <h2 class="sh2" style="font-size:clamp(1.8rem,3vw,2.4rem);">Wir freuen uns<br>auf Sie.</h2>
+        <div class="kc">
+          <a href="tel:+436763145881" class="kcard">
+            <div class="ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><div class="kl">Telefon</div><div class="kv">+43 676 314 58 81</div></div>
+          </a>
+          <a href="tel:+43 7242 290692" class="kcard">
+            <div class="ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><div class="kl">Telefon 2</div><div class="kv">07242 29 06 92</div></div>
+          </a>
+          <a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener" class="kcard">
+            <div class="ki" style="background:rgba(255,128,0,.08);color:#FF8000;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+            <div><div class="kl" style="color:#FF8000;">Lieferando</div><div class="kv">Jetzt online bestellen</div></div>
+          </a>
+          <a href="https://maps.google.com/?q=Salzburger+Stra%C3%9Fe+222,+4600+Wels" target="_blank" rel="noopener" class="kcard">
+            <div class="ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
+            <div><div class="kl">Route</div><div class="kv">Salzburger Str. 222, 4600 Wels</div></div>
+          </a>
+          <a href="https://www.instagram.com/zhengzhengyan88/" target="_blank" rel="noopener" class="kcard">
+            <div class="ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+            <div><div class="kl">Instagram</div><div class="kv">@zhengzhengyan88</div></div>
+          </a>
+        </div>
+        <div class="mw">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2660.394!2d14.0245!3d48.1548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4773976f76b90a77%3A0x35ca6d98be476e1e!2sAmiya%20Wok%20%26%20More%20Wels!5e0!3m2!1sde!2sat!4v1700000000000" allowfullscreen loading="lazy" title="Amiya Standort"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="fcta">
+  <div class="fbg"><img src="img-grill-plate.jpg" alt="Grill Teller Amiya Wels" loading="lazy"></div>
+  <div class="fov"></div>
+  <div class="fc rv">
+    <div class="fey">Amiya Wok &amp; More · Salzburger Str. 222 · Wels</div>
+    <h2 class="fh">Hunger <em>bekommen?</em></h2>
+    <p class="fs">Dann wird es Zeit für Amiya.</p>
+    <div class="fb2">
+      <a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener" class="bl">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Lieferando bestellen
+      </a>
+      <a href="tel:+436763145881" class="bg">Anrufen</a>
+      <a href="https://maps.google.com/?q=Salzburger+Stra%C3%9Fe+222,+4600+Wels" target="_blank" rel="noopener" class="bg">Route</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi2">
+    <div>
+      <div class="fbn">Amiya Wok &amp; More Wels</div>
+      <span class="fbs">Asia Restaurant · All-you-can-eat</span>
+      <p class="fbd">Sushi, Wok, Mongolengrill &amp; Seafood – täglich frisch in Wels. 4,1★ Google · Über 1.300 Bewertungen.</p>
+    </div>
+    <div>
+      <div class="fct">Restaurant</div>
+      <ul class="fli">
+        <li><a href="#buffet">Buffet</a></li>
+        <li><a href="#sushi">Sushi &amp; Wok</a></li>
+        <li><a href="#seafood">Seafood &amp; Grill</a></li>
+        <li><a href="#restaurant">Das Restaurant</a></li>
+        <li><a href="#bewertungen">Bewertungen</a></li>
+        <li><a href="https://www.lieferando.at/speisekarte/amiya-wok-more-wels" target="_blank" rel="noopener">Lieferando</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fct">Kontakt</div>
+      <div class="fco">
+        Salzburger Straße 222<br>4600 Wels, Österreich<br>
+        <a href="tel:+436763145881">+43 676 314 58 81</a><br>
+        <a href="tel:+43 7242 290692">07242 29 06 92</a><br><br>
+        Mo–Do: 11–15 &amp; 17–22<br>
+        Fr–So + Feiertage: 11–22<br><br>
+        <a href="https://www.instagram.com/zhengzhengyan88/" target="_blank">@zhengzhengyan88</a>
+      </div>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© 2025 Amiya Wok &amp; More Wels</span>
+    <div class="fleg">
+      <a href="#">Impressum <span style="opacity:.4">[Platzhalter]</span></a>
+      <a href="#">Datenschutz <span style="opacity:.4">[Platzhalter]</span></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// INTRO
+setTimeout(()=>document.getElementById('intro').classList.add('out'), 2100);
+
+// PROGRESS
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+
+// NAV
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>80),{passive:true});
+
+// MENU
+const menu=document.getElementById('menu'),ham=document.getElementById('ham'),mc=document.getElementById('mc');
+function openM(){menu.classList.add('open');ham.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';mc.focus();}
+function closeM(){menu.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';ham.focus();}
+ham.addEventListener('click',openM);mc.addEventListener('click',closeM);
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeM));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open'))closeM();});
+
+// TABS
+function setTab(i){
+  document.querySelectorAll('.tab').forEach((t,j)=>{t.classList.toggle('on',j===i);});
+  document.querySelectorAll('.panel').forEach((p,j)=>p.classList.toggle('on',j===i));
+}
+
+// PARALLAX
+const cb=document.getElementById('cbg');
+if(cb)window.addEventListener('scroll',()=>{
+  const r=cb.parentElement.getBoundingClientRect();
+  if(r.top<innerHeight&&r.bottom>0)cb.style.transform='translateY('+(1-(r.bottom/(innerHeight+r.height)))*40+'px)';
+},{passive:true});
+
+// REVEAL
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.rv,.rl,.rr').forEach(el=>obs.observe(el));
+
+// ÖFFNUNGSSTATUS
+(function(){
+  const d=new Date(),day=d.getDay(),h=d.getHours()+d.getMinutes()/60;
+  let open=false;
+  if(day===5||day===6||day===0)open=h>=11&&h<22;
+  else if(day>=1&&day<=4)open=(h>=11&&h<15)||(h>=17&&h<22);
+  const el=document.getElementById('sbadge');
+  if(el){el.className='sbadge '+(open?'open':'closed');el.innerHTML='<div class="sdot"></div>'+(open?'Jetzt geöffnet':'Aktuell geschlossen');}
+})();
+
+if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)document.getElementById('intro').classList.add('out');
+</script>
+</body>
+</html>
