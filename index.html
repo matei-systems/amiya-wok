@@ -72,7 +72,7 @@ ul{list-style:none;}
   body{cursor:none;}
   a,button,.tab,.gitem,input,textarea{cursor:none;}
 }
-.cur{position:fixed;top:0;left:0;width:46px;height:46px;pointer-events:none;z-index:99999;opacity:0;transition:opacity .4s;will-change:transform;}
+.cur{position:fixed;top:0;left:0;width:52px;height:52px;pointer-events:none;z-index:99999;opacity:0;transition:opacity .4s;will-change:transform;}
 .cur.show{opacity:1;}
 .cur svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(20,16,14,.4));}
 .stkA,.stkB{transform-origin:0 0;transition:transform .55s var(--ease2);}
@@ -325,7 +325,7 @@ ul{list-style:none;}
 .mpanel-d{font-size:.82rem;color:rgba(255,255,255,.62);max-width:400px;line-height:1.7;}
 .mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;}
 @media(max-width:700px){.mgrid{grid-template-columns:1fr;}}
-.mitem{display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:3px;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);opacity:0;transform:translateY(14px);animation:miIn .55s var(--ease2) forwards;animation-delay:calc(var(--mi,0) * .06s + .1s);}
+.mitem{display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);opacity:0;transform:translateY(14px);animation:miIn .55s var(--ease2) forwards;animation-delay:calc(var(--mi,0) * .06s + .1s);}
 @keyframes miIn{to{opacity:1;transform:none;}}
 .mitem:hover{background:rgba(255,255,255,.06);border-color:var(--gold-soft);transform:translateX(5px);}
 .mitem-n{font-size:.9rem;font-weight:600;color:#fff;margin-bottom:.3rem;}
@@ -338,7 +338,7 @@ ul{list-style:none;}
 .fcards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
 @media(max-width:900px){.fcards{grid-template-columns:1fr 1fr;}}
 @media(max-width:600px){.fcards{grid-template-columns:1fr;}}
-.fcard{position:relative;border-radius:5px;overflow:hidden;aspect-ratio:3/4;isolation:isolate;box-shadow:0 20px 45px -28px rgba(20,16,14,.5);}
+.fcard{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:3/4;isolation:isolate;box-shadow:0 20px 45px -28px rgba(20,16,14,.5);}
 .fcard img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease2);}
 .fcard:hover img{transform:scale(1.09);}
 .fcard::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,14,0) 28%,rgba(20,16,14,.94) 100%);transition:opacity .3s;}
@@ -352,8 +352,9 @@ ul{list-style:none;}
 /* CINEMATIC */
 .cine{position:relative;overflow:hidden;height:56vh;min-height:340px;display:flex;align-items:center;justify-content:center;}
 .cbg{position:absolute;inset:-10%;filter:brightness(.5);will-change:transform;animation:cineZoom 18s ease-in-out infinite alternate;}
-.cbg img{width:100%;height:100%;object-fit:cover;object-position:center 42%;}
+.cbg img{width:100%;height:100%;object-fit:cover;object-position:center 58%;}
 @keyframes cineZoom{from{transform:scale(1.01)}to{transform:scale(1.05)}}
+.cov{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(10,8,7,.55) 0%,rgba(10,8,7,.15) 55%,rgba(10,8,7,.4) 100%);pointer-events:none;}
 .cc{position:relative;z-index:2;text-align:center;padding:0 5vw;}
 .ch{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5.2vw,4.5rem);color:#fff;line-height:1.08;letter-spacing:-.01em;margin-bottom:.7rem;}
 .ch em{font-style:italic;color:var(--gold);}
@@ -373,7 +374,7 @@ ul{list-style:none;}
 /* LIGHTBOX */
 #lightbox{position:fixed;inset:0;background:rgba(10,8,7,.96);z-index:8000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;padding:5vw;}
 #lightbox.open{opacity:1;visibility:visible;}
-#lightbox img{max-width:100%;max-height:88vh;border-radius:3px;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);transform:scale(.92);transition:transform .4s var(--ease),opacity .28s ease;}
+#lightbox img{max-width:100%;max-height:88vh;border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);transform:scale(.92);transition:transform .4s var(--ease),opacity .28s ease;}
 #lightbox.open img{transform:scale(1);}
 #lightbox img.swap{opacity:0;transform:scale(.97);}
 .lb-close{position:absolute;top:1.6rem;right:1.6rem;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);color:#fff;display:flex;align-items:center;justify-content:center;transition:border-color .3s,transform .3s;}
@@ -401,7 +402,7 @@ ul{list-style:none;}
 .rcta:hover{border-color:var(--gold);color:#fff;transform:translateX(3px);}
 .rplat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;}
 @media(max-width:780px){.rplat-grid{grid-template-columns:1fr 1fr;}}
-.rplat{padding:1.6rem 1.4rem;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:6px;transition:transform .4s var(--ease2),background .4s var(--ease),border-color .4s var(--ease);animation:platFloat 5s ease-in-out infinite;animation-delay:calc(var(--i,0) * .5s);}
+.rplat{padding:1.6rem 1.4rem;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:4px;transition:transform .4s var(--ease2),background .4s var(--ease),border-color .4s var(--ease);animation:platFloat 5s ease-in-out infinite;animation-delay:calc(var(--i,0) * .5s);}
 .rplat:hover{transform:translateY(-6px) !important;background:rgba(255,255,255,.065);border-color:var(--gold-soft);animation-play-state:paused;}
 @keyframes platFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
 .rplat-badge{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:1rem;margin-bottom:1rem;border:1px solid;}
@@ -482,11 +483,11 @@ ul{list-style:none;}
 /* MOBILE BAR */
 .mob{display:none;position:fixed;bottom:0;left:0;right:0;z-index:400;background:rgba(248,244,239,.96);backdrop-filter:blur(20px);border-top:1px solid var(--ln);padding:.6rem 4vw calc(var(--sb)+.6rem);grid-template-columns:1fr 1.5fr 1fr;gap:.4rem;}
 @media(max-width:780px){.mob{display:grid;}body{padding-bottom:calc(66px + var(--sb));}}
-.mbi{display:flex;flex-direction:column;align-items:center;gap:.2rem;padding:.45rem .2rem;border-radius:6px;text-decoration:none;border:none;background:none;min-height:46px;justify-content:center;transition:background .2s;}
+.mbi{display:flex;flex-direction:column;align-items:center;gap:.2rem;padding:.45rem .2rem;border-radius:4px;text-decoration:none;border:none;background:none;min-height:46px;justify-content:center;transition:background .2s;}
 .mbi:hover,.mbi:active{background:var(--bg2);}
 .mbi-i{width:18px;height:18px;color:var(--mu);}
 .mbi-l{font-size:.5rem;font-weight:600;color:var(--mu);}
-.mbi-o{background:var(--red);border-radius:7px;}
+.mbi-o{background:var(--red);border-radius:4px;}
 .mbi-o:hover,.mbi-o:active{background:var(--red2);}
 .mbi-o .mbi-i,.mbi-o .mbi-l{color:#fff;}
 
@@ -528,31 +529,51 @@ footer::before{content:'';position:absolute;top:-30%;left:50%;transform:translat
 <body>
 <div id="prog"></div>
 <div class="cur" id="cur" aria-hidden="true">
-  <svg viewBox="0 0 56 56" fill="none">
+  <svg viewBox="0 0 60 60" fill="none">
     <defs>
       <linearGradient id="woodGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#493324"/>
-        <stop offset="55%" stop-color="#6B4A32"/>
-        <stop offset="100%" stop-color="#8F6A48"/>
+        <stop offset="0%" stop-color="#1F140D"/>
+        <stop offset="45%" stop-color="#3D2A1B"/>
+        <stop offset="100%" stop-color="#6B4A2F"/>
+      </linearGradient>
+      <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#E4C888"/>
+        <stop offset="50%" stop-color="var(--gold)"/>
+        <stop offset="100%" stop-color="#8A6A3A"/>
       </linearGradient>
     </defs>
-    <g transform="translate(14,12)">
+    <g transform="translate(15,13)">
       <g class="stkA">
-        <path d="M-1.5,0 L1.5,0 L0.55,32.5 Q0,34.2 -0.55,32.5 Z" fill="url(#woodGrad)"/>
-        <rect x="-1.35" y="7.4" width="2.7" height="1.6" rx=".3" fill="var(--gold)" opacity=".9"/>
-        <path d="M0.95,2.2 L0.4,29.5" stroke="rgba(255,238,210,.4)" stroke-width=".55" stroke-linecap="round"/>
+        <path d="M-2.3,0 L2.3,0 L.5,35 Q0,36.8 -.5,35 Z" fill="url(#woodGrad)"/>
+        <path d="M-.85,3.5 L-.3,32" stroke="rgba(0,0,0,.35)" stroke-width=".3" stroke-linecap="round"/>
+        <path d="M.9,4.5 L.42,31" stroke="rgba(0,0,0,.28)" stroke-width=".25" stroke-linecap="round"/>
+        <rect x="-2.05" y="8.6" width="4.1" height="2.3" rx=".3" fill="#6B4E28" opacity=".55"/>
+        <rect x="-1.9" y="8.35" width="3.8" height="1.8" rx=".25" fill="url(#goldGrad)"/>
+        <path d="M1.55,2.6 L.55,30" stroke="rgba(255,230,190,.55)" stroke-width=".65" stroke-linecap="round"/>
+        <circle cx="0" cy="1.4" r=".7" fill="rgba(255,240,212,.55)"/>
       </g>
       <g class="stkB">
-        <path d="M-1.5,0 L1.5,0 L0.55,32.5 Q0,34.2 -0.55,32.5 Z" fill="url(#woodGrad)"/>
-        <rect x="-1.35" y="7.4" width="2.7" height="1.6" rx=".3" fill="var(--gold)" opacity=".9"/>
-        <path d="M0.95,2.2 L0.4,29.5" stroke="rgba(255,238,210,.4)" stroke-width=".55" stroke-linecap="round"/>
+        <path d="M-2.3,0 L2.3,0 L.5,35 Q0,36.8 -.5,35 Z" fill="url(#woodGrad)"/>
+        <path d="M-.85,3.5 L-.3,32" stroke="rgba(0,0,0,.35)" stroke-width=".3" stroke-linecap="round"/>
+        <path d="M.9,4.5 L.42,31" stroke="rgba(0,0,0,.28)" stroke-width=".25" stroke-linecap="round"/>
+        <rect x="-2.05" y="8.6" width="4.1" height="2.3" rx=".3" fill="#6B4E28" opacity=".55"/>
+        <rect x="-1.9" y="8.35" width="3.8" height="1.8" rx=".25" fill="url(#goldGrad)"/>
+        <path d="M1.55,2.6 L.55,30" stroke="rgba(255,230,190,.55)" stroke-width=".65" stroke-linecap="round"/>
+        <circle cx="0" cy="1.4" r=".7" fill="rgba(255,240,212,.55)"/>
       </g>
     </g>
   </svg>
 </div>
 
 <div id="intro" aria-hidden="true">
-  <div class="imark"><svg viewBox="0 0 40 40" fill="none"><line x1="9" y1="8" x2="31" y2="32" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/><line x1="14" y1="6" x2="34" y2="30" stroke="var(--red2)" stroke-width="2" stroke-linecap="round"/></svg></div>
+  <div class="imark"><svg viewBox="0 0 40 40" fill="none">
+    <g transform="translate(10,8)">
+      <path d="M-1.6,0 L1.6,0 L.35,24 Q0,25.2 -.35,24 Z" fill="url(#woodGrad)" transform="rotate(33)"/>
+      <path d="M-1.6,0 L1.6,0 L.35,24 Q0,25.2 -.35,24 Z" fill="url(#woodGrad)" transform="rotate(47)"/>
+      <rect x="-1.45" y="6" width="2.9" height="1.3" rx=".2" fill="url(#goldGrad)" transform="rotate(33)"/>
+      <rect x="-1.45" y="6" width="2.9" height="1.3" rx=".2" fill="url(#goldGrad)" transform="rotate(47)"/>
+    </g>
+  </svg></div>
   <div class="iw">Amiya<em>.</em></div>
   <div class="is">Wok &amp; More · Wels</div>
   <div class="itr"><div class="ifl"></div></div>
@@ -661,7 +682,7 @@ footer::before{content:'';position:absolute;top:-30%;left:50%;transform:translat
 <section id="ueber-uns" class="sec" style="background:var(--bg);">
   <div class="si2">
     <div class="exp-grid">
-      <div class="rl">
+      <div class="rl" style="position:relative;">
         <div class="about-img imgwipe">
           <picture>
             <source srcset="images/about-table.webp" type="image/webp">
@@ -715,7 +736,7 @@ footer::before{content:'';position:absolute;top:-30%;left:50%;transform:translat
       <div class="fcard rt" style="--i:0">
         <picture><source srcset="images/sushi-platter.webp" type="image/webp"><img src="images/sushi-platter.jpg" alt="Sushi Platte mit Lachs-Rosen, Nigiri und Maki" width="800" height="600" loading="lazy" decoding="async"></picture>
         <div class="fcard-glass"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        <div class="fcard-c"><div class="fcard-t">Sushi Selection</div><div class="fcard-n">Amiya Deluxe Platte</div><div class="fcard-p">ab €24,90</div></div>
+        <div class="fcard-c"><div class="fcard-t">Sushi</div><div class="fcard-n">Amiya Deluxe Platte</div><div class="fcard-p">ab €24,90</div></div>
       </div>
       <div class="fcard rt" style="--i:1">
         <picture><source srcset="images/teppanyaki.webp" type="image/webp"><img src="images/teppanyaki.jpg" alt="Teppanyaki Teller mit Hummer und Gemüse" width="391" height="675" loading="lazy" decoding="async"></picture>
@@ -837,6 +858,7 @@ footer::before{content:'';position:absolute;top:-30%;left:50%;transform:translat
   <div class="cbg" id="cbg">
     <picture><source srcset="images/teppanyaki.webp" type="image/webp"><img src="images/teppanyaki.jpg" alt="Teppanyaki Teller mit Hummer und frischem Gemüse" width="391" height="675" loading="lazy" decoding="async"></picture>
   </div>
+  <div class="cov"></div>
   <div class="cc rb">
     <h2 class="ch">Präzision trifft<br><em>Leidenschaft.</em></h2>
     <p class="cs">Jedes Gericht – mit Sorgfalt zubereitet, mit Stil serviert.</p>
@@ -1094,12 +1116,15 @@ function setTab(i,focus){
       const head=p.querySelector('.mpanel-head');if(head){head.style.animation='none';head.offsetHeight;head.style.animation='';}
     }
   });
-  const ind=document.getElementById('tabIndicator'),active=tabs[i];
-  if(ind&&active){ind.style.transform=`translateX(${active.offsetLeft}px) scaleX(${active.offsetWidth})`;}
+  syncIndicator();
   if(focus)tabs[i].focus();
 }
-window.addEventListener('load',()=>setTab(0));
-window.addEventListener('resize',()=>{const i=[...document.querySelectorAll('.tab')].findIndex(t=>t.classList.contains('on'));if(i>=0)setTab(i);});
+function syncIndicator(){
+  const ind=document.getElementById('tabIndicator'),active=document.querySelector('.tab.on');
+  if(ind&&active)ind.style.transform=`translateX(${active.offsetLeft}px) scaleX(${active.offsetWidth})`;
+}
+window.addEventListener('load',syncIndicator);
+window.addEventListener('resize',syncIndicator);
 document.querySelectorAll('.tab').forEach((t,i,arr)=>{
   t.addEventListener('keydown',e=>{
     let ni=null;
@@ -1268,7 +1293,7 @@ if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !window.matc
     cx+=vx;cy+=vy;
     const targetTilt=Math.max(-6,Math.min(6,vx*.5));
     tilt+=(targetTilt-tilt)*.15;
-    cur.style.transform=`translate(${cx}px,${cy}px) translate(-64%,-66%) rotate(${tilt.toFixed(2)}deg)`;
+    cur.style.transform=`translate(${cx}px,${cy}px) translate(-63%,-66%) rotate(${tilt.toFixed(2)}deg)`;
     requestAnimationFrame(loop);
   }
   loop();
