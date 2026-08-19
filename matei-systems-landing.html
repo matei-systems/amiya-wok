@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>matei.systems | Automatisierte High-End Webseiten & Live-Demo Generator</title>
+<meta name="description" content="matei.systems baut automatisierte, hochperformante Webseiten. Fordere in 60 Sekunden deine eigene Live-Demo an – gamifiziert, blitzschnell, überzeugend.">
+<meta name="theme-color" content="#07070c">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind (CDN, single-file setup) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Outfit', 'sans-serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          ink: {
+            950: '#07070c',
+            900: '#0b0b13',
+            850: '#0f0f1a',
+            800: '#14141f',
+            700: '#1c1c2a',
+            600: '#26263a',
+          },
+        },
+        boxShadow: {
+          glow: '0 0 40px -8px rgba(99,102,241,.45)',
+          glowCyan: '0 0 40px -8px rgba(34,211,238,.45)',
+        },
+      },
+    },
+  };
+</script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background: #07070c;
+    color: #e8e8f0;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Glow / grid background ---------- */
+  .bg-aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(60% 45% at 15% 0%, rgba(99,102,241,.20), transparent 60%),
+      radial-gradient(50% 40% at 90% 10%, rgba(34,211,238,.14), transparent 60%),
+      radial-gradient(60% 50% at 50% 100%, rgba(168,85,247,.14), transparent 60%),
+      #07070c;
+  }
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 40%, transparent 90%);
+  }
+
+  /* ---------- Glassmorphism ---------- */
+  .glass {
+    background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+    border: 1px solid rgba(255,255,255,.09);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .glass-strong {
+    background: linear-gradient(180deg, rgba(20,20,31,.85), rgba(11,11,19,.85));
+    border: 1px solid rgba(255,255,255,.10);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  /* ---------- Gradient text ---------- */
+  .grad-text {
+    background: linear-gradient(90deg, #818cf8, #22d3ee 55%, #c084fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn-primary {
+    background: linear-gradient(90deg, #6366f1, #22d3ee);
+    color: #050508;
+    font-weight: 700;
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    box-shadow: 0 0 0 rgba(99,102,241,0);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(99,102,241,.65); filter: brightness(1.05); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { opacity: .4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,.14);
+    transition: all .2s ease;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.04); }
+
+  /* ---------- Card hover ---------- */
+  .card-hover { transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+  .card-hover:hover { transform: translateY(-6px); border-color: rgba(129,140,248,.5); box-shadow: 0 20px 60px -20px rgba(99,102,241,.35); }
+
+  /* ---------- Fade-up scroll reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- Fancy scrollbar ---------- */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #07070c; }
+  ::-webkit-scrollbar-thumb { background: #26263a; border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: #34344a; }
+
+  /* ---------- Wizard step transitions ---------- */
+  .wiz-step { display: none; animation: stepIn .45s ease; }
+  .wiz-step.active { display: block; }
+  @keyframes stepIn { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: translateX(0); } }
+
+  /* ---------- Progress dots ---------- */
+  .progress-track { background: rgba(255,255,255,.08); }
+  .progress-fill { background: linear-gradient(90deg, #6366f1, #22d3ee); transition: width .5s cubic-bezier(.65,0,.35,1); }
+
+  /* ---------- Color swatch ---------- */
+  .swatch { transition: transform .2s ease, box-shadow .2s ease; cursor: pointer; }
+  .swatch:hover { transform: scale(1.08); }
+  .swatch.selected { box-shadow: 0 0 0 3px #07070c, 0 0 0 5px currentColor; }
+
+  /* ---------- Feature pill ---------- */
+  .pill { transition: all .2s ease; cursor: pointer; user-select: none; }
+  .pill.selected { background: linear-gradient(90deg, rgba(99,102,241,.25), rgba(34,211,238,.2)); border-color: rgba(129,140,248,.7); }
+
+  /* ---------- Dropzone ---------- */
+  .dropzone { transition: all .2s ease; }
+  .dropzone.drag { border-color: #818cf8; background: rgba(129,140,248,.08); }
+
+  /* ---------- Loading orb ---------- */
+  .orb {
+    width: 130px; height: 130px; border-radius: 9999px;
+    background: conic-gradient(from 0deg, #6366f1, #22d3ee, #c084fc, #6366f1);
+    filter: blur(0.3px);
+    animation: spin 2.2s linear infinite;
+  }
+  .orb-mask {
+    position: absolute; inset: 8px; border-radius: 9999px; background: #0b0b13;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-line { opacity: .35; transition: opacity .3s ease, color .3s ease; }
+  .loading-line.active { opacity: 1; color: #22d3ee; }
+  .loading-line.done { opacity: .7; color: #a3e635; }
+
+  /* ---------- Marquee ---------- */
+  .marquee-track { animation: marquee 28s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ---------- Mock browser float ---------- */
+  .float-mock { animation: floaty 6s ease-in-out infinite; }
+  @keyframes floaty { 0%,100% { transform: translateY(0) rotate(-1.2deg); } 50% { transform: translateY(-14px) rotate(0.6deg); } }
+
+  input[type=text]::placeholder, input[type=email]::placeholder, input[type=tel]::placeholder, textarea::placeholder { color: #6b6b80; }
+  input, select, textarea { color-scheme: dark; }
+
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-chevron { transform: rotate(180deg); }
+
+  .live-preview-frame { transition: box-shadow .4s ease, border-color .4s ease; }
+</style>
+</head>
+
+<body class="antialiased">
+<div class="bg-aurora"></div>
+<div class="bg-grid"></div>
+
+<!-- ============================================================ -->
+<!-- NAVIGATION                                                    -->
+<!-- ============================================================ -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 mt-4">
+    <nav class="glass rounded-2xl px-5 py-3.5 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5 font-display font-bold text-lg tracking-tight">
+        <span class="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 shadow-glow">
+          <i data-lucide="zap" class="w-4.5 h-4.5 text-ink-950" style="width:18px;height:18px"></i>
+        </span>
+        matei<span class="grad-text">.systems</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-white/70">
+        <a href="#features" class="hover:text-white transition">Vorteile</a>
+        <a href="#process" class="hover:text-white transition">So funktioniert's</a>
+        <a href="#generator" class="hover:text-white transition">Demo anfordern</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </div>
+      <a href="#generator" class="btn-primary text-sm px-5 py-2.5 rounded-xl inline-flex items-center gap-2">
+        Live-Demo anfordern
+        <i data-lucide="arrow-right" style="width:15px;height:15px"></i>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- HERO                                                          -->
+<!-- ============================================================ -->
+<section id="top" class="relative pt-40 pb-24 md:pt-48 md:pb-32 px-5 sm:px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-medium text-white/70 mb-6">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+        </span>
+        Live-Demo-Generator online &mdash; in 60 Sekunden startklar
+      </div>
+
+      <h1 class="font-display font-black text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] tracking-tight">
+        Automatisierte Webseiten,<br>
+        die <span class="grad-text">sofort konvertieren.</span>
+      </h1>
+
+      <p class="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
+        matei.systems verwandelt deine Unternehmensdaten in Sekunden in eine
+        maßgeschneiderte, blitzschnelle Live-Demo &mdash; automatisiert, hochperformant
+        und auf Conversion optimiert. Kein Warten. Kein Rätselraten.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="#generator" class="btn-primary rounded-xl px-7 py-4 inline-flex items-center gap-2 text-[15px]">
+          <i data-lucide="sparkles" style="width:18px;height:18px"></i>
+          Jetzt kostenlose Demo generieren
+        </a>
+        <a href="#process" class="btn-ghost rounded-xl px-7 py-4 inline-flex items-center gap-2 text-[15px] text-white/80">
+          <i data-lucide="play-circle" style="width:18px;height:18px"></i>
+          So funktioniert's
+        </a>
+      </div>
+
+      <!-- Trust stats -->
+      <div class="mt-12 grid grid-cols-3 gap-6 max-w-md">
+        <div>
+          <div class="font-display font-extrabold text-2xl sm:text-3xl grad-text">180+</div>
+          <div class="text-xs text-white/50 mt-1">Live-Projekte gebaut</div>
+        </div>
+        <div>
+          <div class="font-display font-extrabold text-2xl sm:text-3xl grad-text">&lt;60s</div>
+          <div class="text-xs text-white/50 mt-1">Demo-Generierung</div>
+        </div>
+        <div>
+          <div class="font-display font-extrabold text-2xl sm:text-3xl grad-text">98%</div>
+          <div class="text-xs text-white/50 mt-1">Performance-Score</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero mockup -->
+    <div class="relative">
+      <div class="absolute -inset-10 bg-gradient-to-tr from-indigo-500/20 via-cyan-400/10 to-fuchsia-500/20 blur-3xl rounded-full"></div>
+      <div class="relative float-mock glass-strong rounded-2xl overflow-hidden shadow-2xl">
+        <div class="flex items-center gap-1.5 px-4 py-3 border-b border-white/10 bg-white/[.03]">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/70"></span>
+          <div class="ml-3 flex-1 glass rounded-md px-3 py-1 text-[11px] text-white/40 flex items-center gap-1.5">
+            <i data-lucide="lock" style="width:10px;height:10px"></i>
+            deine-firma.matei-demo.systems
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-400 to-cyan-300"></div>
+              <div class="h-3 w-24 rounded bg-white/20"></div>
+            </div>
+            <div class="flex gap-3">
+              <div class="h-2.5 w-10 rounded bg-white/10"></div>
+              <div class="h-2.5 w-10 rounded bg-white/10"></div>
+              <div class="h-2.5 w-14 rounded bg-white/20"></div>
+            </div>
+          </div>
+          <div class="h-32 rounded-xl bg-gradient-to-br from-indigo-500/25 via-fuchsia-500/15 to-cyan-400/20 border border-white/10 flex items-center justify-center">
+            <i data-lucide="wand-2" class="text-white/50" style="width:34px;height:34px"></i>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="h-16 rounded-lg bg-white/5 border border-white/10"></div>
+            <div class="h-16 rounded-lg bg-white/5 border border-white/10"></div>
+            <div class="h-16 rounded-lg bg-white/5 border border-white/10"></div>
+          </div>
+          <div class="flex items-center justify-between pt-2">
+            <div class="h-2 w-32 rounded bg-white/10"></div>
+            <div class="h-8 w-28 rounded-lg bg-gradient-to-r from-indigo-500 to-cyan-400"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute -bottom-6 -left-6 glass rounded-xl px-4 py-3 flex items-center gap-2.5 shadow-glow">
+        <i data-lucide="loader-circle" class="animate-spin text-cyan-300" style="width:16px;height:16px"></i>
+        <span class="text-xs font-medium text-white/80">KI generiert Struktur&hellip;</span>
+      </div>
+      <div class="absolute -top-5 -right-5 glass rounded-xl px-4 py-2.5 flex items-center gap-2 shadow-glowCyan">
+        <i data-lucide="check-circle-2" class="text-emerald-400" style="width:16px;height:16px"></i>
+        <span class="text-xs font-medium text-white/80">Demo bereit</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo marquee -->
+  <div class="max-w-7xl mx-auto mt-24 reveal">
+    <p class="text-center text-xs uppercase tracking-[0.2em] text-white/35 mb-6">Vertraut von wachstumsstarken Unternehmen</p>
+    <div class="overflow-hidden mask-fade relative">
+      <div class="flex gap-16 marquee-track w-max text-white/25 font-display font-semibold text-xl">
+        <span>NOVA RETAIL</span><span>WELS DIGITAL</span><span>URBAN&nbsp;CRAFT</span><span>FORGE&nbsp;LABS</span><span>BLUEPEAK</span><span>ORBIT&nbsp;GROUP</span>
+        <span>NOVA RETAIL</span><span>WELS DIGITAL</span><span>URBAN&nbsp;CRAFT</span><span>FORGE&nbsp;LABS</span><span>BLUEPEAK</span><span>ORBIT&nbsp;GROUP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FEATURES                                                      -->
+<!-- ============================================================ -->
+<section id="features" class="relative py-24 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <span class="text-xs font-semibold tracking-[0.2em] text-cyan-300 uppercase">Warum matei.systems</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-4 leading-tight">
+        Von der Idee zur <span class="grad-text">Live-Website</span> &mdash; automatisiert.
+      </h2>
+      <p class="mt-4 text-white/55">Wir kombinieren KI-gestützte Automatisierung mit handgefertigtem High-End-Design, damit du nicht wochenlang auf eine Website warten musst.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
+      <div class="reveal glass card-hover rounded-2xl p-6">
+        <div class="w-11 h-11 rounded-xl bg-indigo-500/15 flex items-center justify-center mb-5">
+          <i data-lucide="rocket" class="text-indigo-300" style="width:20px;height:20px"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg">Blitzschnell</h3>
+        <p class="text-sm text-white/55 mt-2 leading-relaxed">Deine Live-Demo entsteht in unter 60 Sekunden &mdash; keine Wartezeit, kein Agentur-Ping-Pong.</p>
+      </div>
+      <div class="reveal glass card-hover rounded-2xl p-6">
+        <div class="w-11 h-11 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-5">
+          <i data-lucide="cpu" class="text-cyan-300" style="width:20px;height:20px"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg">Vollautomatisiert</h3>
+        <p class="text-sm text-white/55 mt-2 leading-relaxed">KI-Struktur, Branding und Inhalte werden automatisch aus deinen Angaben generiert.</p>
+      </div>
+      <div class="reveal glass card-hover rounded-2xl p-6">
+        <div class="w-11 h-11 rounded-xl bg-fuchsia-500/15 flex items-center justify-center mb-5">
+          <i data-lucide="trending-up" class="text-fuchsia-300" style="width:20px;height:20px"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg">Conversion-stark</h3>
+        <p class="text-sm text-white/55 mt-2 leading-relaxed">Jede Demo basiert auf bewährten CRO-Prinzipien &mdash; gebaut, um Besucher zu Kunden zu machen.</p>
+      </div>
+      <div class="reveal glass card-hover rounded-2xl p-6">
+        <div class="w-11 h-11 rounded-xl bg-emerald-500/15 flex items-center justify-center mb-5">
+          <i data-lucide="shield-check" class="text-emerald-300" style="width:20px;height:20px"></i>
+        </div>
+        <h3 class="font-display font-semibold text-lg">Production-Ready</h3>
+        <p class="text-sm text-white/55 mt-2 leading-relaxed">Kein Wegwerf-Mockup: Jede Demo ist Fundament für deine echte, performante Website.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PROCESS (3 steps)                                             -->
+<!-- ============================================================ -->
+<section id="process" class="relative py-24 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <span class="text-xs font-semibold tracking-[0.2em] text-cyan-300 uppercase">Ablauf</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-4">So funktioniert's</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-16 relative">
+      <div class="hidden md:block absolute top-9 left-[16.5%] right-[16.5%] h-px bg-gradient-to-r from-indigo-500/40 via-cyan-400/40 to-fuchsia-500/40"></div>
+
+      <div class="reveal relative glass rounded-2xl p-7 text-center">
+        <div class="mx-auto w-16 h-16 rounded-2xl bg-ink-900 border border-white/10 flex items-center justify-center font-display font-black text-xl grad-text mb-5">01</div>
+        <h3 class="font-display font-semibold text-lg mb-2">Daten eingeben</h3>
+        <p class="text-sm text-white/55 leading-relaxed">Firmenname, Branche, Branding und Wunschfeatures &mdash; in einem spielerischen 5-Schritte-Formular.</p>
+      </div>
+      <div class="reveal relative glass rounded-2xl p-7 text-center">
+        <div class="mx-auto w-16 h-16 rounded-2xl bg-ink-900 border border-white/10 flex items-center justify-center font-display font-black text-xl grad-text mb-5">02</div>
+        <h3 class="font-display font-semibold text-lg mb-2">Instant-Demo sehen</h3>
+        <p class="text-sm text-white/55 leading-relaxed">Unsere Engine generiert live eine individuelle Vorschau &mdash; abgestimmt auf dein Branding.</p>
+      </div>
+      <div class="reveal relative glass rounded-2xl p-7 text-center">
+        <div class="mx-auto w-16 h-16 rounded-2xl bg-ink-900 border border-white/10 flex items-center justify-center font-display font-black text-xl grad-text mb-5">03</div>
+        <h3 class="font-display font-semibold text-lg mb-2">Durchstarten</h3>
+        <p class="text-sm text-white/55 leading-relaxed">Unser Team meldet sich, verfeinert die Demo mit dir und bringt deine Website live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- DEMO GENERATOR WIZARD                                         -->
+<!-- ============================================================ -->
+<section id="generator" class="relative py-24 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <span class="text-xs font-semibold tracking-[0.2em] text-cyan-300 uppercase">Kostenloser Generator</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-4">Fordere deine <span class="grad-text">Live-Demo</span> an</h2>
+      <p class="mt-4 text-white/55">5 kurze Schritte. Kein Verkaufsgespräch, keine Kreditkarte &mdash; nur deine maßgeschneiderte Vorschau.</p>
+    </div>
+
+    <div class="mt-14 grid lg:grid-cols-[1fr_380px] gap-8 items-start">
+
+      <!-- Wizard card -->
+      <div class="glass-strong rounded-3xl p-6 sm:p-10 reveal">
+
+        <!-- Progress -->
+        <div class="mb-9">
+          <div class="flex items-center justify-between text-xs text-white/50 mb-2.5">
+            <span id="stepLabel">Schritt 1 von 5</span>
+            <span id="stepTitle" class="font-medium text-white/80">Unternehmensdetails</span>
+          </div>
+          <div class="progress-track h-1.5 rounded-full overflow-hidden">
+            <div id="progressFill" class="progress-fill h-full rounded-full" style="width:20%"></div>
+          </div>
+        </div>
+
+        <form id="wizardForm" novalidate>
+
+          <!-- STEP 1: Unternehmensdetails -->
+          <div class="wiz-step active" data-step="1">
+            <div class="space-y-5">
+              <div>
+                <label class="block text-sm font-medium text-white/70 mb-2">Unternehmensname *</label>
+                <input type="text" id="companyName" required placeholder="z. B. Amiya Wok & More"
+                  class="w-full bg-white/[.04] border border-white/10 focus:border-indigo-400 outline-none rounded-xl px-4 py-3.5 text-[15px] transition placeholder:text-white/30">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-white/70 mb-2">Branche *</label>
+                <select id="industry" required class="w-full bg-white/[.04] border border-white/10 focus:border-indigo-400 outline-none rounded-xl px-4 py-3.5 text-[15px] transition">
+                  <option value="" class="bg-ink-900">Bitte wählen&hellip;</option>
+                  <option value="gastronomie" class="bg-ink-900">Gastronomie & Restaurant</option>
+                  <option value="einzelhandel" class="bg-ink-900">Einzelhandel / E-Commerce</option>
+                  <option value="beauty" class="bg-ink-900">Beauty & Wellness</option>
+                  <option value="handwerk" class="bg-ink-900">Handwerk & Bau</option>
+                  <option value="beratung" class="bg-ink-900">Beratung / Agentur</option>
+                  <option value="gesundheit" class="bg-ink-900">Gesundheit & Medizin</option>
+                  <option value="immobilien" class="bg-ink-900">Immobilien</option>
+                  <option value="fitness" class="bg-ink-900">Fitness & Sport</option>
+                  <option value="sonstiges" class="bg-ink-900">Sonstiges</option>
+                </select>
+              </div>
+              <div id="industryOtherWrap" class="hidden">
+                <label class="block text-sm font-medium text-white/70 mb-2">Branche genauer beschreiben</label>
+                <input type="text" id="industryOther" placeholder="z. B. Nachhilfeinstitut"
+                  class="w-full bg-white/[.04] border border-white/10 focus:border-indigo-400 outline-none rounded-xl px-4 py-3.5 text-[15px] transition placeholder:text-white/30">
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Design & Branding -->
+          <div class="wiz-step" data-step="2">
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium text-white/70 mb-3">Hauptfarbe wählen *</label>
+                <div id="colorSwatches" class="grid grid-cols-3 sm:grid-cols-6 gap-3"></div>
+                <div class="flex items-center gap-3 mt-4">
+                  <input type="color" id="customColor" value="#6366f1" class="w-11 h-11 rounded-lg bg-transparent border border-white/10 cursor-pointer">
+                  <span class="text-xs text-white/45">oder eigenen Farbton wählen</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-white/70 mb-3">Firmenlogo</label>
+                <div id="dropzone" class="dropzone glass rounded-2xl border-2 border-dashed border-white/15 px-6 py-10 text-center cursor-pointer">
+                  <input type="file" id="logoInput" accept="image/*" class="hidden">
+                  <div id="dropzoneEmpty">
+                    <i data-lucide="upload-cloud" class="mx-auto text-white/40 mb-3" style="width:30px;height:30px"></i>
+                    <p class="text-sm text-white/60">Logo hierher ziehen oder <span class="text-cyan-300 font-medium">durchsuchen</span></p>
+                    <p class="text-xs text-white/30 mt-1">PNG, JPG oder SVG &middot; max. 5&nbsp;MB</p>
+                  </div>
+                  <div id="dropzoneFilled" class="hidden flex items-center justify-center gap-4">
+                    <img id="logoPreview" class="w-14 h-14 rounded-xl object-cover border border-white/10" alt="Logo Vorschau">
+                    <div class="text-left">
+                      <p id="logoName" class="text-sm font-medium text-white/80"></p>
+                      <button type="button" id="logoRemove" class="text-xs text-red-300/80 hover:text-red-300 mt-1">Entfernen</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: Content & Features -->
+          <div class="wiz-step" data-step="3">
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium text-white/70 mb-2">Was macht dein Unternehmen? *</label>
+                <textarea id="description" required rows="4" placeholder="Kurz beschreiben, z. B. 'Premium Asia Restaurant mit Sushi, Wok und Teppanyaki in Wels.'"
+                  class="w-full bg-white/[.04] border border-white/10 focus:border-indigo-400 outline-none rounded-xl px-4 py-3.5 text-[15px] transition resize-none placeholder:text-white/30"></textarea>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-white/70 mb-3">Gewünschte Features</label>
+                <div id="featurePills" class="flex flex-wrap gap-2.5">
+                  <span class="pill glass rounded-full px-4 py-2 text-sm border border-white/10" data-feature="Buchungskalender">📅 Buchungskalender</span>
+                  <span class="pill glass rounded-full px-4 py-2 text-sm border border-white/10" data-feature="Kontaktformular">✉️ Kontaktformular</span>
+                  <span class="pill glass rounded-full px-4 py-2 text-sm border border-white/10" data-feature="Online-Shop">🛒 Online-Shop</span>
+                  <span class="pill glass rounded-full px-4 py-2 text-sm border border-white/10" data-feature="Mehrsprachigkeit">🌐 Mehrsprachigkeit</span>
+                  <span class="pill glass rounded-full px-4 py-2 text-sm border border-white/10" data-feature="Blog / News">📰 Blog / News</span>
+                  <span class="pill glass rounded-full px-4 py-2 text-sm border border-white/10" data-feature="Live-Chat">💬 Live-Chat</span>
+                  <span class="pill glass rounded-full px-4 py-2 text-sm border border-white/10" data-feature="Newsletter">📩 Newsletter</span>
+                  <span class="pill glass rounded-full px-4 py-2 text-sm border border-white/10" data-feature="Google Maps">📍 Google Maps</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: Kontaktdaten -->
+          <div class="wiz-step" data-step="4">
+            <div class="space-y-5">
+              <div>
+                <label class="block text-sm font-medium text-white/70 mb-2">Vollständiger Name *</label>
+                <input type="text" id="contactName" required placeholder="Max Mustermann"
+                  class="w-full bg-white/[.04] border border-white/10 focus:border-indigo-400 outline-none rounded-xl px-4 py-3.5 text-[15px] transition placeholder:text-white/30">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-white/70 mb-2">E-Mail-Adresse *</label>
+                <input type="email" id="contactEmail" required placeholder="max@firma.at"
+                  class="w-full bg-white/[.04] border border-white/10 focus:border-indigo-400 outline-none rounded-xl px-4 py-3.5 text-[15px] transition placeholder:text-white/30">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-white/70 mb-2">Telefonnummer *</label>
+                <div class="flex gap-2.5">
+                  <select id="countryCode" class="bg-white/[.04] border border-white/10 focus:border-indigo-400 outline-none rounded-xl px-3 py-3.5 text-[15px] transition w-[130px]"></select>
+                  <input type="tel" id="contactPhone" required placeholder="660 1234567"
+                    class="flex-1 bg-white/[.04] border border-white/10 focus:border-indigo-400 outline-none rounded-xl px-4 py-3.5 text-[15px] transition placeholder:text-white/30">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 5: Magic loading + Ergebnis -->
+          <div class="wiz-step" data-step="5">
+            <div id="loadingScreen" class="text-center py-6">
+              <div class="relative w-[130px] h-[130px] mx-auto mb-8">
+                <div class="orb"></div>
+                <div class="orb-mask flex items-center justify-center">
+                  <i data-lucide="sparkles" class="text-cyan-300" style="width:34px;height:34px"></i>
+                </div>
+              </div>
+              <div class="space-y-3 max-w-xs mx-auto text-left">
+                <p class="loading-line text-sm flex items-center gap-2" data-line="1"><i data-lucide="circle-dashed" style="width:14px;height:14px"></i> KI-Struktur generieren&hellip;</p>
+                <p class="loading-line text-sm flex items-center gap-2" data-line="2"><i data-lucide="circle-dashed" style="width:14px;height:14px"></i> Farbschema anwenden&hellip;</p>
+                <p class="loading-line text-sm flex items-center gap-2" data-line="3"><i data-lucide="circle-dashed" style="width:14px;height:14px"></i> Inhalte & Features einfügen&hellip;</p>
+                <p class="loading-line text-sm flex items-center gap-2" data-line="4"><i data-lucide="circle-dashed" style="width:14px;height:14px"></i> Live-Demo erstellen&hellip;</p>
+              </div>
+            </div>
+
+            <div id="resultScreen" class="hidden text-center py-4">
+              <div class="mx-auto w-16 h-16 rounded-2xl bg-emerald-500/15 flex items-center justify-center mb-6">
+                <i data-lucide="party-popper" class="text-emerald-400" style="width:28px;height:28px"></i>
+              </div>
+              <h3 class="font-display font-bold text-2xl mb-2">Deine Demo wird vorbereitet!</h3>
+              <p class="text-white/55 max-w-sm mx-auto leading-relaxed">Unser Team erstellt gerade die finale Version deiner Live-Demo für <span id="resultCompanyName" class="text-white font-medium"></span> und meldet sich innerhalb von 24&nbsp;Stunden unter <span id="resultEmail" class="text-white font-medium"></span>.</p>
+              <button type="button" id="restartWizard" class="btn-ghost rounded-xl px-6 py-3 mt-8 text-sm text-white/80 inline-flex items-center gap-2">
+                <i data-lucide="rotate-ccw" style="width:15px;height:15px"></i>
+                Neue Demo anfordern
+              </button>
+            </div>
+          </div>
+
+          <!-- Nav buttons -->
+          <div id="wizardNav" class="flex items-center justify-between mt-10 pt-6 border-t border-white/10">
+            <button type="button" id="prevBtn" class="btn-ghost rounded-xl px-5 py-3 text-sm text-white/70 inline-flex items-center gap-2 invisible">
+              <i data-lucide="arrow-left" style="width:15px;height:15px"></i> Zurück
+            </button>
+            <p id="formError" class="text-xs text-red-300/90 hidden"></p>
+            <button type="button" id="nextBtn" class="btn-primary rounded-xl px-6 py-3 text-sm inline-flex items-center gap-2">
+              Weiter <i data-lucide="arrow-right" style="width:15px;height:15px"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Live preview panel -->
+      <div class="hidden lg:block sticky top-28 reveal">
+        <p class="text-xs uppercase tracking-[0.2em] text-white/35 mb-3 text-center">Live-Vorschau</p>
+        <div id="livePreviewFrame" class="live-preview-frame glass-strong rounded-2xl overflow-hidden" style="border-color: rgba(99,102,241,.35); box-shadow: 0 0 50px -18px rgba(99,102,241,.45);">
+          <div class="flex items-center gap-1.5 px-3.5 py-2.5 border-b border-white/10 bg-white/[.03]">
+            <span class="w-2 h-2 rounded-full bg-red-400/70"></span>
+            <span class="w-2 h-2 rounded-full bg-yellow-400/70"></span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400/70"></span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <div id="pvLogo" class="w-8 h-8 rounded-lg flex items-center justify-center text-[11px] font-bold text-ink-950 overflow-hidden" style="background:#6366f1;">A</div>
+              <div id="pvName" class="text-sm font-semibold truncate">Deine Firma</div>
+            </div>
+            <div id="pvHero" class="h-24 rounded-xl mb-4 flex items-center justify-center text-center px-3" style="background:linear-gradient(135deg,#6366f1,#22d3ee);">
+              <span class="text-[13px] font-display font-bold text-ink-950/90">Willkommen bei Deine Firma</span>
+            </div>
+            <p id="pvDesc" class="text-[11px] text-white/45 leading-relaxed mb-4">Deine Beschreibung erscheint hier, sobald du sie eingibst.</p>
+            <div id="pvFeatures" class="flex flex-wrap gap-1.5 mb-4"></div>
+            <div id="pvBtn" class="text-center rounded-lg py-2 text-[12px] font-semibold text-ink-950" style="background:#6366f1;">Jetzt kontaktieren</div>
+          </div>
+        </div>
+        <p class="text-center text-xs text-white/35 mt-4">Aktualisiert sich live während der Eingabe</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FAQ                                                           -->
+<!-- ============================================================ -->
+<section id="faq" class="relative py-24 px-5 sm:px-8">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center reveal">
+      <span class="text-xs font-semibold tracking-[0.2em] text-cyan-300 uppercase">FAQ</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-4">Häufige Fragen</h2>
+    </div>
+
+    <div class="mt-12 space-y-3">
+      <details class="reveal glass rounded-2xl px-6 py-5 group">
+        <summary class="flex items-center justify-between font-medium">
+          Ist die Demo wirklich kostenlos?
+          <i data-lucide="chevron-down" class="faq-chevron transition-transform text-white/50" style="width:18px;height:18px"></i>
+        </summary>
+        <p class="text-sm text-white/55 mt-3 leading-relaxed">Ja, absolut. Die Demo-Generierung ist zu 100% kostenlos und unverbindlich &mdash; du entscheidest danach, ob wir gemeinsam weitermachen.</p>
+      </details>
+      <details class="reveal glass rounded-2xl px-6 py-5">
+        <summary class="flex items-center justify-between font-medium">
+          Wie lange dauert es, bis ich meine Demo sehe?
+          <i data-lucide="chevron-down" class="faq-chevron transition-transform text-white/50" style="width:18px;height:18px"></i>
+        </summary>
+        <p class="text-sm text-white/55 mt-3 leading-relaxed">Der interaktive Generator zeigt dir sofort eine Live-Vorschau. Die vollständige, personalisierte Demo erhältst du innerhalb von 24 Stunden per E-Mail.</p>
+      </details>
+      <details class="reveal glass rounded-2xl px-6 py-5">
+        <summary class="flex items-center justify-between font-medium">
+          Was passiert mit meinen Daten?
+          <i data-lucide="chevron-down" class="faq-chevron transition-transform text-white/50" style="width:18px;height:18px"></i>
+        </summary>
+        <p class="text-sm text-white/55 mt-3 leading-relaxed">Deine Angaben werden ausschließlich zur Erstellung deiner Demo verwendet und nicht an Dritte weitergegeben. Details findest du in unserer Datenschutzerklärung.</p>
+      </details>
+      <details class="reveal glass rounded-2xl px-6 py-5">
+        <summary class="flex items-center justify-between font-medium">
+          Kann ich die Demo später anpassen lassen?
+          <i data-lucide="chevron-down" class="faq-chevron transition-transform text-white/50" style="width:18px;height:18px"></i>
+        </summary>
+        <p class="text-sm text-white/55 mt-3 leading-relaxed">Ja. Die generierte Demo ist der Ausgangspunkt &mdash; gemeinsam mit unserem Team verfeinern wir Design, Inhalte und Features, bis alles passt.</p>
+      </details>
+      <details class="reveal glass rounded-2xl px-6 py-5">
+        <summary class="flex items-center justify-between font-medium">
+          Für welche Branchen eignet sich matei.systems?
+          <i data-lucide="chevron-down" class="faq-chevron transition-transform text-white/50" style="width:18px;height:18px"></i>
+        </summary>
+        <p class="text-sm text-white/55 mt-3 leading-relaxed">Von Gastronomie über Einzelhandel bis Beratung &mdash; unsere automatisierte Plattform passt sich an nahezu jede Branche und jeden Anwendungsfall an.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FINAL CTA                                                     -->
+<!-- ============================================================ -->
+<section class="relative py-20 px-5 sm:px-8">
+  <div class="max-w-5xl mx-auto glass-strong rounded-3xl px-8 py-16 text-center relative overflow-hidden reveal">
+    <div class="absolute -top-24 -right-24 w-72 h-72 bg-indigo-500/25 blur-[100px] rounded-full"></div>
+    <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-cyan-400/20 blur-[100px] rounded-full"></div>
+    <h2 class="font-display font-extrabold text-3xl sm:text-4xl relative">Bereit für deine <span class="grad-text">automatisierte Demo?</span></h2>
+    <p class="text-white/55 mt-4 max-w-lg mx-auto relative">Es dauert weniger als zwei Minuten &mdash; und du siehst sofort, wie deine neue Website aussehen könnte.</p>
+    <a href="#generator" class="btn-primary rounded-xl px-8 py-4 inline-flex items-center gap-2 mt-8 relative text-[15px]">
+      <i data-lucide="sparkles" style="width:18px;height:18px"></i>
+      Jetzt Demo generieren
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                        -->
+<!-- ============================================================ -->
+<footer class="relative border-t border-white/10 px-5 sm:px-8 py-14">
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-2.5 font-display font-bold text-lg mb-4">
+        <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400">
+          <i data-lucide="zap" class="text-ink-950" style="width:18px;height:18px"></i>
+        </span>
+        matei<span class="grad-text">.systems</span>
+      </div>
+      <p class="text-sm text-white/45 leading-relaxed">Automatisierte, hochperformante Webseiten &mdash; von der Idee zur Live-Demo in Sekunden.</p>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold mb-4">Navigation</h4>
+      <ul class="space-y-2.5 text-sm text-white/50">
+        <li><a href="#features" class="hover:text-white transition">Vorteile</a></li>
+        <li><a href="#process" class="hover:text-white transition">So funktioniert's</a></li>
+        <li><a href="#generator" class="hover:text-white transition">Demo anfordern</a></li>
+        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold mb-4">Rechtliches</h4>
+      <ul class="space-y-2.5 text-sm text-white/50">
+        <li><a href="#" class="hover:text-white transition">Impressum</a></li>
+        <li><a href="#" class="hover:text-white transition">Datenschutz</a></li>
+        <li><a href="#" class="hover:text-white transition">AGB</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold mb-4">Kontakt</h4>
+      <ul class="space-y-2.5 text-sm text-white/50">
+        <li class="flex items-center gap-2"><i data-lucide="mail" style="width:14px;height:14px"></i> hallo@matei.systems</li>
+        <li class="flex items-center gap-2"><i data-lucide="map-pin" style="width:14px;height:14px"></i> Österreich</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/10 text-xs text-white/35 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <span>&copy; <span id="year"></span> matei.systems. Alle Rechte vorbehalten.</span>
+    <span>Made with automatisierter Präzision.</span>
+  </div>
+</footer>
+
+<script>
+lucide.createIcons();
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============================================================
+   Scroll reveal
+   ============================================================ */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ============================================================
+   Data: color presets & country codes
+   ============================================================ */
+const COLOR_PRESETS = [
+  { name: 'Electric Indigo', hex: '#6366f1', gradient: 'linear-gradient(135deg,#6366f1,#22d3ee)' },
+  { name: 'Cyber Violet',    hex: '#a855f7', gradient: 'linear-gradient(135deg,#a855f7,#ec4899)' },
+  { name: 'Neon Green',      hex: '#10b981', gradient: 'linear-gradient(135deg,#10b981,#22d3ee)' },
+  { name: 'Sunset Orange',   hex: '#f97316', gradient: 'linear-gradient(135deg,#f97316,#ef4444)' },
+  { name: 'Royal Gold',      hex: '#f59e0b', gradient: 'linear-gradient(135deg,#f59e0b,#b45309)' },
+  { name: 'Monochrome',      hex: '#94a3b8', gradient: 'linear-gradient(135deg,#e2e8f0,#64748b)' },
+];
+
+const COUNTRY_CODES = [
+  { code: '+43', flag: '🇦🇹', name: 'Österreich' },
+  { code: '+49', flag: '🇩🇪', name: 'Deutschland' },
+  { code: '+41', flag: '🇨🇭', name: 'Schweiz' },
+  { code: '+423', flag: '🇱🇮', name: 'Liechtenstein' },
+  { code: '+39', flag: '🇮🇹', name: 'Italien' },
+  { code: '+33', flag: '🇫🇷', name: 'Frankreich' },
+  { code: '+34', flag: '🇪🇸', name: 'Spanien' },
+  { code: '+31', flag: '🇳🇱', name: 'Niederlande' },
+  { code: '+32', flag: '🇧🇪', name: 'Belgien' },
+  { code: '+45', flag: '🇩🇰', name: 'Dänemark' },
+  { code: '+46', flag: '🇸🇪', name: 'Schweden' },
+  { code: '+47', flag: '🇳🇴', name: 'Norwegen' },
+  { code: '+48', flag: '🇵🇱', name: 'Polen' },
+  { code: '+420', flag: '🇨🇿', name: 'Tschechien' },
+  { code: '+36', flag: '🇭🇺', name: 'Ungarn' },
+  { code: '+385', flag: '🇭🇷', name: 'Kroatien' },
+  { code: '+30', flag: '🇬🇷', name: 'Griechenland' },
+  { code: '+351', flag: '🇵🇹', name: 'Portugal' },
+  { code: '+44', flag: '🇬🇧', name: 'Vereinigtes Königreich' },
+  { code: '+353', flag: '🇮🇪', name: 'Irland' },
+  { code: '+1', flag: '🇺🇸', name: 'USA / Kanada' },
+  { code: '+90', flag: '🇹🇷', name: 'Türkei' },
+];
+
+/* ============================================================
+   Form state
+   ============================================================ */
+const formData = {
+  companyName: '', industry: '', industryOther: '',
+  colorHex: COLOR_PRESETS[0].hex, colorGradient: COLOR_PRESETS[0].gradient,
+  logoDataUrl: '', logoName: '',
+  description: '', features: [],
+  contactName: '', contactEmail: '', countryCode: '+43', contactPhone: '',
+};
+
+let currentStep = 1;
+const TOTAL_STEPS = 5;
+const stepTitles = { 1: 'Unternehmensdetails', 2: 'Design & Branding', 3: 'Content & Features', 4: 'Kontaktdaten', 5: 'Live-Demo wird erstellt' };
+
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+const formError = document.getElementById('formError');
+const wizardNav = document.getElementById('wizardNav');
+
+function showError(msg) {
+  formError.textContent = msg;
+  formError.classList.remove('hidden');
+}
+function clearError() {
+  formError.classList.add('hidden');
+  formError.textContent = '';
+}
+
+function goToStep(n) {
+  document.querySelectorAll('.wiz-step').forEach(el => el.classList.remove('active'));
+  document.querySelector(`.wiz-step[data-step="${n}"]`).classList.add('active');
+  document.getElementById('stepLabel').textContent = `Schritt ${n} von ${TOTAL_STEPS}`;
+  document.getElementById('stepTitle').textContent = stepTitles[n];
+  document.getElementById('progressFill').style.width = `${(n / TOTAL_STEPS) * 100}%`;
+  prevBtn.classList.toggle('invisible', n === 1);
+  clearError();
+  lucide.createIcons();
+}
+
+/* ---- Step 1 ---- */
+const industrySelect = document.getElementById('industry');
+const industryOtherWrap = document.getElementById('industryOtherWrap');
+industrySelect.addEventListener('change', () => {
+  industryOtherWrap.classList.toggle('hidden', industrySelect.value !== 'sonstiges');
+});
+
+/* ---- Step 2: color swatches ---- */
+const colorSwatchesEl = document.getElementById('colorSwatches');
+COLOR_PRESETS.forEach((c, i) => {
+  const el = document.createElement('div');
+  el.className = 'swatch h-12 rounded-xl' + (i === 0 ? ' selected' : '');
+  el.style.background = c.gradient;
+  el.style.color = c.hex;
+  el.title = c.name;
+  el.dataset.hex = c.hex;
+  el.dataset.gradient = c.gradient;
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+    el.classList.add('selected');
+    formData.colorHex = c.hex;
+    formData.colorGradient = c.gradient;
+    document.getElementById('customColor').value = c.hex;
+    updateLivePreview();
+  });
+  colorSwatchesEl.appendChild(el);
+});
+document.getElementById('customColor').addEventListener('input', (e) => {
+  document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+  formData.colorHex = e.target.value;
+  formData.colorGradient = `linear-gradient(135deg, ${e.target.value}, #22d3ee)`;
+  updateLivePreview();
+});
+
+/* ---- Step 2: logo dropzone ---- */
+const dropzone = document.getElementById('dropzone');
+const logoInput = document.getElementById('logoInput');
+const dropzoneEmpty = document.getElementById('dropzoneEmpty');
+const dropzoneFilled = document.getElementById('dropzoneFilled');
+
+dropzone.addEventListener('click', () => logoInput.click());
+['dragenter', 'dragover'].forEach(evt => dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('drag'); }));
+['dragleave', 'drop'].forEach(evt => dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('drag'); }));
+dropzone.addEventListener('drop', (e) => { if (e.dataTransfer.files[0]) handleLogoFile(e.dataTransfer.files[0]); });
+logoInput.addEventListener('change', (e) => { if (e.target.files[0]) handleLogoFile(e.target.files[0]); });
+
+function handleLogoFile(file) {
+  if (!file.type.startsWith('image/')) { showError('Bitte lade eine Bilddatei hoch.'); return; }
+  if (file.size > 5 * 1024 * 1024) { showError('Datei darf max. 5 MB groß sein.'); return; }
+  clearError();
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    formData.logoDataUrl = e.target.result;
+    formData.logoName = file.name;
+    document.getElementById('logoPreview').src = e.target.result;
+    document.getElementById('logoName').textContent = file.name;
+    dropzoneEmpty.classList.add('hidden');
+    dropzoneFilled.classList.remove('hidden');
+    updateLivePreview();
+  };
+  reader.readAsDataURL(file);
+}
+document.getElementById('logoRemove').addEventListener('click', (e) => {
+  e.stopPropagation();
+  formData.logoDataUrl = ''; formData.logoName = '';
+  logoInput.value = '';
+  dropzoneEmpty.classList.remove('hidden');
+  dropzoneFilled.classList.add('hidden');
+  updateLivePreview();
+});
+
+/* ---- Step 3: feature pills ---- */
+document.querySelectorAll('.pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    const f = pill.dataset.feature;
+    pill.classList.toggle('selected');
+    if (formData.features.includes(f)) {
+      formData.features = formData.features.filter(x => x !== f);
+    } else {
+      formData.features.push(f);
+    }
+    updateLivePreview();
+  });
+});
+
+/* ---- Step 4: country code dropdown ---- */
+const countrySelect = document.getElementById('countryCode');
+COUNTRY_CODES.forEach(c => {
+  const opt = document.createElement('option');
+  opt.value = c.code;
+  opt.textContent = `${c.flag} ${c.code} ${c.name}`;
+  opt.className = 'bg-ink-900';
+  if (c.code === '+43') opt.selected = true;
+  countrySelect.appendChild(opt);
+});
+
+/* ============================================================
+   Live preview panel
+   ============================================================ */
+function updateLivePreview() {
+  const name = document.getElementById('companyName')?.value || 'Deine Firma';
+  const desc = document.getElementById('description')?.value || 'Deine Beschreibung erscheint hier, sobald du sie eingibst.';
+  const initial = name.trim().charAt(0).toUpperCase() || 'A';
+
+  document.getElementById('pvName').textContent = name;
+  document.getElementById('pvHero').querySelector('span').textContent = `Willkommen bei ${name}`;
+  document.getElementById('pvHero').style.background = formData.colorGradient;
+  document.getElementById('pvDesc').textContent = desc.length > 110 ? desc.slice(0, 110) + '…' : desc;
+  document.getElementById('pvBtn').style.background = formData.colorHex;
+
+  const logoEl = document.getElementById('pvLogo');
+  if (formData.logoDataUrl) {
+    logoEl.style.background = 'transparent';
+    logoEl.innerHTML = `<img src="${formData.logoDataUrl}" class="w-full h-full object-cover" alt="Logo">`;
+  } else {
+    logoEl.style.background = formData.colorHex;
+    logoEl.innerHTML = initial;
+  }
+
+  const pvFeatures = document.getElementById('pvFeatures');
+  pvFeatures.innerHTML = '';
+  formData.features.slice(0, 4).forEach(f => {
+    const tag = document.createElement('span');
+    tag.className = 'text-[10px] px-2 py-1 rounded-full bg-white/10 text-white/60';
+    tag.textContent = f;
+    pvFeatures.appendChild(tag);
+  });
+
+  document.getElementById('livePreviewFrame').style.borderColor = formData.colorHex + '80';
+  document.getElementById('livePreviewFrame').style.boxShadow = `0 0 50px -18px ${formData.colorHex}70`;
+}
+document.getElementById('companyName').addEventListener('input', updateLivePreview);
+document.getElementById('description').addEventListener('input', updateLivePreview);
+
+/* ============================================================
+   Step validation
+   ============================================================ */
+function validateStep(n) {
+  clearError();
+  if (n === 1) {
+    formData.companyName = document.getElementById('companyName').value.trim();
+    formData.industry = industrySelect.value;
+    formData.industryOther = document.getElementById('industryOther').value.trim();
+    if (!formData.companyName) return 'Bitte gib deinen Unternehmensnamen ein.';
+    if (!formData.industry) return 'Bitte wähle eine Branche aus.';
+  }
+  if (n === 2) {
+    // color always has a default; logo optional
+  }
+  if (n === 3) {
+    formData.description = document.getElementById('description').value.trim();
+    if (!formData.description) return 'Bitte beschreibe kurz dein Unternehmen.';
+  }
+  if (n === 4) {
+    formData.contactName = document.getElementById('contactName').value.trim();
+    formData.contactEmail = document.getElementById('contactEmail').value.trim();
+    formData.countryCode = countrySelect.value;
+    formData.contactPhone = document.getElementById('contactPhone').value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.contactName) return 'Bitte gib deinen Namen ein.';
+    if (!emailPattern.test(formData.contactEmail)) return 'Bitte gib eine gültige E-Mail-Adresse ein.';
+    if (!formData.contactPhone || formData.contactPhone.length < 4) return 'Bitte gib eine gültige Telefonnummer ein.';
+  }
+  return null;
+}
+
+/* ============================================================
+   Navigation
+   ============================================================ */
+nextBtn.addEventListener('click', () => {
+  const err = validateStep(currentStep);
+  if (err) { showError(err); return; }
+
+  if (currentStep < TOTAL_STEPS) {
+    currentStep++;
+    goToStep(currentStep);
+    if (currentStep === TOTAL_STEPS) {
+      wizardNav.classList.add('hidden');
+      runGenerationSequence();
+    }
+  }
+});
+prevBtn.addEventListener('click', () => {
+  if (currentStep > 1) { currentStep--; goToStep(currentStep); }
+});
+
+document.getElementById('restartWizard').addEventListener('click', () => {
+  currentStep = 1;
+  document.getElementById('wizardForm').reset();
+  formData.features = [];
+  document.querySelectorAll('.pill.selected').forEach(p => p.classList.remove('selected'));
+  document.getElementById('loadingScreen').classList.remove('hidden');
+  document.getElementById('resultScreen').classList.add('hidden');
+  document.querySelectorAll('.loading-line').forEach(l => l.classList.remove('active', 'done'));
+  wizardNav.classList.remove('hidden');
+  goToStep(1);
+  updateLivePreview();
+});
+
+/* ============================================================
+   Magic loading sequence (Step 5)
+   ============================================================ */
+function runGenerationSequence() {
+  const lines = document.querySelectorAll('.loading-line');
+  lines.forEach(l => l.classList.remove('active', 'done'));
+
+  /* ------------------------------------------------------------
+     BACKEND HOOK: send the collected formData to your automation
+     (n8n, Make, a webhook, your API, etc.) right when generation
+     starts. Swap WEBHOOK_URL for your real endpoint.
+     ------------------------------------------------------------ */
+  const WEBHOOK_URL = 'https://your-n8n-or-make-webhook-url.example.com/matei-demo-request';
+  fetch(WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  }).catch(() => { /* silently ignore in this demo build */ });
+
+  let i = 0;
+  function step() {
+    if (i > 0) lines[i - 1].classList.add('done');
+    if (i < lines.length) {
+      lines[i].classList.add('active');
+      i++;
+      setTimeout(step, 850);
+    } else {
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+        document.getElementById('resultScreen').classList.remove('hidden');
+        document.getElementById('resultCompanyName').textContent = formData.companyName;
+        document.getElementById('resultEmail').textContent = formData.contactEmail;
+        lucide.createIcons();
+      }, 500);
+    }
+  }
+  step();
+}
+
+/* init */
+updateLivePreview();
+</script>
+</body>
+</html>
