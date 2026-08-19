@@ -171,6 +171,10 @@
   /* ---------- Marquee ---------- */
   .marquee-track { animation: marquee 28s linear infinite; }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .mask-fade {
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
 
   /* ---------- Mock browser float ---------- */
   .float-mock { animation: floaty 6s ease-in-out infinite; }
@@ -739,6 +743,10 @@
 lucide.createIcons();
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/* Prevent the Enter key (or any implicit submit) from reloading the page
+   and wiping the wizard's progress — there is no real form action here. */
+document.getElementById('wizardForm').addEventListener('submit', (e) => e.preventDefault());
+
 /* ============================================================
    Scroll reveal
    ============================================================ */
@@ -1014,11 +1022,33 @@ prevBtn.addEventListener('click', () => {
 document.getElementById('restartWizard').addEventListener('click', () => {
   currentStep = 1;
   document.getElementById('wizardForm').reset();
+
+  // Reset feature pills
   formData.features = [];
   document.querySelectorAll('.pill.selected').forEach(p => p.classList.remove('selected'));
+
+  // Reset industry "Sonstiges" field visibility
+  industryOtherWrap.classList.add('hidden');
+
+  // Reset color back to the first preset
+  formData.colorHex = COLOR_PRESETS[0].hex;
+  formData.colorGradient = COLOR_PRESETS[0].gradient;
+  document.getElementById('customColor').value = COLOR_PRESETS[0].hex;
+  document.querySelectorAll('.swatch').forEach((s, i) => s.classList.toggle('selected', i === 0));
+
+  // Reset logo upload
+  formData.logoDataUrl = '';
+  formData.logoName = '';
+  logoInput.value = '';
+  document.getElementById('logoPreview').src = '';
+  dropzoneEmpty.classList.remove('hidden');
+  dropzoneFilled.classList.add('hidden');
+
+  // Reset loading/result screens
   document.getElementById('loadingScreen').classList.remove('hidden');
   document.getElementById('resultScreen').classList.add('hidden');
   document.querySelectorAll('.loading-line').forEach(l => l.classList.remove('active', 'done'));
+
   wizardNav.classList.remove('hidden');
   goToStep(1);
   updateLivePreview();
